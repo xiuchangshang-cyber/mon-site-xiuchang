@@ -1,0 +1,934 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Portfolio — SHANG Xiuchang</title>
+<link href="https://fonts.googleapis.com/css2?family=Syne:wght@400;700;800&family=Instrument+Serif:ital@0;1&family=DM+Sans:wght@300;400;500&display=swap" rel="stylesheet">
+<style>
+  *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+  :root {
+    --ink: #0f0e0c;
+    --paper: #f5f0e8;
+    --accent1: #ff4d1c;
+    --accent2: #0047ff;
+    --accent3: #c8f000;
+    --muted: #9e9a93;
+  }
+
+  html { scroll-behavior: smooth; }
+
+  body {
+    background: var(--paper);
+    color: var(--ink);
+    font-family: 'DM Sans', sans-serif;
+    font-weight: 300;
+    overflow-x: hidden;
+  }
+
+  /* NOISE OVERLAY */
+  body::before {
+    content: '';
+    position: fixed;
+    inset: 0;
+    background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 200 200' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)' opacity='0.04'/%3E%3C/svg%3E");
+    pointer-events: none;
+    z-index: 1000;
+    opacity: 0.4;
+  }
+
+  /* CURSOR */
+  * { cursor: none; }
+  #cursor {
+    position: fixed;
+    width: 12px; height: 12px;
+    background: var(--accent1);
+    border-radius: 50%;
+    pointer-events: none;
+    z-index: 9999;
+    transform: translate(-50%, -50%);
+    transition: width 0.2s, height 0.2s, background 0.2s;
+    mix-blend-mode: multiply;
+  }
+
+  /* HEADER */
+  header {
+    padding: 2rem 4rem;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    position: sticky;
+    top: 0;
+    z-index: 100;
+    background: var(--paper);
+    border-bottom: 1px solid rgba(15,14,12,0.1);
+  }
+
+  .logo {
+    font-family: 'Syne', sans-serif;
+    font-weight: 800;
+    font-size: 1rem;
+    letter-spacing: 0.05em;
+    text-transform: uppercase;
+  }
+
+  nav {
+    display: flex;
+    gap: 2.5rem;
+    font-size: 0.8rem;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+  }
+
+  nav a {
+    color: var(--ink);
+    text-decoration: none;
+    opacity: 0.5;
+    transition: opacity 0.2s;
+  }
+  nav a:hover { opacity: 1; }
+
+  /* HERO */
+  .hero {
+    min-height: 90vh;
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-end;
+    padding: 4rem 4rem 6rem;
+    position: relative;
+    overflow: hidden;
+  }
+
+  .hero-bg-text {
+    position: absolute;
+    top: -2rem;
+    right: -1rem;
+    font-family: 'Syne', sans-serif;
+    font-weight: 800;
+    font-size: clamp(8rem, 20vw, 22rem);
+    color: transparent;
+    -webkit-text-stroke: 1.5px rgba(15,14,12,0.08);
+    line-height: 1;
+    user-select: none;
+    pointer-events: none;
+  }
+
+  .hero-tag {
+    display: inline-block;
+    background: var(--accent3);
+    color: var(--ink);
+    font-size: 0.75rem;
+    font-weight: 500;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+    padding: 0.4rem 0.9rem;
+    margin-bottom: 2rem;
+    width: fit-content;
+  }
+
+  .hero h1 {
+    font-family: 'Syne', sans-serif;
+    font-weight: 800;
+    font-size: clamp(3.5rem, 8vw, 8rem);
+    line-height: 0.95;
+    letter-spacing: -0.03em;
+    max-width: 14ch;
+  }
+
+  .hero h1 em {
+    font-family: 'Instrument Serif', serif;
+    font-style: italic;
+    font-weight: 400;
+    color: var(--accent1);
+  }
+
+  .hero-sub {
+    margin-top: 3rem;
+    display: flex;
+    gap: 4rem;
+    align-items: flex-end;
+  }
+
+  .hero-desc {
+    max-width: 38ch;
+    font-size: 1rem;
+    line-height: 1.7;
+    color: #4a4743;
+  }
+
+  .hero-scroll {
+    font-size: 0.75rem;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    opacity: 0.4;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 0.5rem;
+  }
+
+  .hero-scroll::after {
+    content: '';
+    display: block;
+    width: 1px;
+    height: 60px;
+    background: var(--ink);
+    opacity: 0.3;
+    animation: scrollLine 2s ease-in-out infinite;
+  }
+
+  @keyframes scrollLine {
+    0%, 100% { transform: scaleY(1); opacity: 0.3; }
+    50% { transform: scaleY(0.3); opacity: 0.1; }
+  }
+
+  /* INTRO BAND */
+  .intro-band {
+    background: var(--ink);
+    color: var(--paper);
+    padding: 5rem 4rem;
+    display: grid;
+    grid-template-columns: 1fr 1.6fr;
+    gap: 6rem;
+    align-items: center;
+  }
+
+  .intro-band h2 {
+    font-family: 'Syne', sans-serif;
+    font-weight: 800;
+    font-size: 2.5rem;
+    line-height: 1.1;
+  }
+
+  .intro-band h2 span {
+    color: var(--accent3);
+  }
+
+  .intro-text {
+    font-size: 1.05rem;
+    line-height: 1.8;
+    color: rgba(245,240,232,0.7);
+    border-left: 2px solid var(--accent1);
+    padding-left: 2rem;
+  }
+
+  /* ACTIVITIES SECTION */
+  .activities {
+    padding: 6rem 4rem;
+  }
+
+  .section-label {
+    font-size: 0.75rem;
+    letter-spacing: 0.15em;
+    text-transform: uppercase;
+    color: var(--muted);
+    margin-bottom: 4rem;
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+  }
+
+  .section-label::after {
+    content: '';
+    display: block;
+    height: 1px;
+    width: 80px;
+    background: var(--muted);
+  }
+
+  /* ACTIVITY CARD */
+  .activity {
+    display: grid;
+    grid-template-columns: 1fr 2fr;
+    gap: 4rem;
+    padding: 4rem 0;
+    border-top: 1px solid rgba(15,14,12,0.12);
+    position: relative;
+    opacity: 0;
+    transform: translateY(40px);
+    transition: opacity 0.7s ease, transform 0.7s ease;
+  }
+
+  .activity.visible {
+    opacity: 1;
+    transform: translateY(0);
+  }
+
+  .activity-meta {
+    display: flex;
+    flex-direction: column;
+    gap: 1.5rem;
+    padding-top: 0.5rem;
+  }
+
+  .activity-number {
+    font-family: 'Syne', sans-serif;
+    font-weight: 800;
+    font-size: 5rem;
+    line-height: 1;
+    color: transparent;
+    -webkit-text-stroke: 1.5px var(--ink);
+    opacity: 0.15;
+  }
+
+  .activity-tag {
+    display: inline-block;
+    font-size: 0.7rem;
+    font-weight: 500;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    padding: 0.35rem 0.8rem;
+    width: fit-content;
+    border: 1px solid currentColor;
+  }
+
+  .tag-green { color: #2d7a2d; border-color: #2d7a2d; background: #f0faf0; }
+  .tag-blue { color: var(--accent2); border-color: var(--accent2); background: #f0f3ff; }
+  .tag-orange { color: var(--accent1); border-color: var(--accent1); background: #fff4f0; }
+
+  .activity-content {}
+
+  .activity-content h3 {
+    font-family: 'Syne', sans-serif;
+    font-weight: 800;
+    font-size: clamp(1.8rem, 3vw, 2.8rem);
+    line-height: 1.1;
+    letter-spacing: -0.02em;
+    margin-bottom: 0.5rem;
+  }
+
+  .activity-content .subtitle {
+    font-family: 'Instrument Serif', serif;
+    font-style: italic;
+    font-size: 1.15rem;
+    color: var(--muted);
+    margin-bottom: 2rem;
+  }
+
+  .activity-content p {
+    font-size: 0.95rem;
+    line-height: 1.85;
+    color: #3d3a36;
+    max-width: 60ch;
+    margin-bottom: 1.2rem;
+  }
+
+  .highlight-box {
+    margin-top: 2rem;
+    padding: 1.5rem 2rem;
+    border-left: 3px solid var(--accent1);
+    background: rgba(255, 77, 28, 0.04);
+    font-size: 0.9rem;
+    line-height: 1.7;
+    color: #3d3a36;
+  }
+
+  .highlight-box.green {
+    border-color: #2d7a2d;
+    background: rgba(45, 122, 45, 0.04);
+  }
+
+  .highlight-box.blue {
+    border-color: var(--accent2);
+    background: rgba(0, 71, 255, 0.04);
+  }
+
+  .stat-row {
+    display: flex;
+    gap: 3rem;
+    margin-top: 2rem;
+  }
+
+  .stat {
+    display: flex;
+    flex-direction: column;
+    gap: 0.3rem;
+  }
+
+  .stat-num {
+    font-family: 'Syne', sans-serif;
+    font-weight: 800;
+    font-size: 2.2rem;
+    line-height: 1;
+    color: var(--accent1);
+  }
+
+  .stat-label {
+    font-size: 0.75rem;
+    letter-spacing: 0.05em;
+    text-transform: uppercase;
+    color: var(--muted);
+  }
+
+  .quote-block {
+    margin: 2rem 0;
+    padding: 1.5rem 0;
+    border-top: 1px solid rgba(15,14,12,0.1);
+    border-bottom: 1px solid rgba(15,14,12,0.1);
+  }
+
+  .quote-block blockquote {
+    font-family: 'Instrument Serif', serif;
+    font-style: italic;
+    font-size: 1.3rem;
+    line-height: 1.6;
+    color: var(--ink);
+    max-width: 50ch;
+  }
+
+  /* CLOSING BAND */
+  .closing {
+    background: var(--accent2);
+    color: var(--paper);
+    padding: 6rem 4rem;
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 4rem;
+    align-items: center;
+  }
+
+  .closing h2 {
+    font-family: 'Syne', sans-serif;
+    font-weight: 800;
+    font-size: clamp(2rem, 4vw, 3.5rem);
+    line-height: 1.1;
+    letter-spacing: -0.02em;
+  }
+
+  .closing h2 em {
+    font-family: 'Instrument Serif', serif;
+    font-style: italic;
+    color: var(--accent3);
+  }
+
+  .closing-text {
+    font-size: 1rem;
+    line-height: 1.8;
+    color: rgba(245,240,232,0.75);
+  }
+
+  /* FOOTER */
+  footer {
+    padding: 2.5rem 4rem;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    border-top: 1px solid rgba(15,14,12,0.1);
+    font-size: 0.75rem;
+    letter-spacing: 0.05em;
+    text-transform: uppercase;
+    color: var(--muted);
+  }
+
+  /* PROFILE SECTION */
+  .profile-section {
+    padding: 5rem 4rem;
+    border-bottom: 1px solid rgba(15,14,12,0.1);
+  }
+
+  .profile-grid {
+    display: grid;
+    grid-template-columns: 1fr 2fr;
+    gap: 5rem;
+    align-items: start;
+  }
+
+  .profile-left {
+    display: flex;
+    flex-direction: column;
+    gap: 2rem;
+    position: sticky;
+    top: 6rem;
+  }
+
+  .profile-avatar {
+    width: 80px;
+    height: 80px;
+    background: var(--ink);
+    color: var(--paper);
+    font-family: 'Syne', sans-serif;
+    font-weight: 800;
+    font-size: 1.4rem;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    letter-spacing: 0.05em;
+  }
+
+  .profile-name {
+    font-family: 'Syne', sans-serif;
+    font-weight: 800;
+    font-size: 2.2rem;
+    line-height: 1.05;
+    letter-spacing: -0.02em;
+  }
+
+  .profile-name em {
+    font-family: 'Instrument Serif', serif;
+    font-style: italic;
+    font-weight: 400;
+    color: var(--accent1);
+  }
+
+  .profile-contact {
+    display: flex;
+    flex-direction: column;
+    gap: 0.5rem;
+    margin-top: 1rem;
+    font-size: 0.8rem;
+    color: var(--muted);
+    line-height: 1.6;
+  }
+
+  .profile-right {
+    display: flex;
+    flex-direction: column;
+    gap: 2.5rem;
+  }
+
+  .profile-block {}
+
+  .profile-block-label {
+    font-size: 0.7rem;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+    color: var(--muted);
+    margin-bottom: 0.6rem;
+  }
+
+  .profile-block-title {
+    font-family: 'Syne', sans-serif;
+    font-weight: 700;
+    font-size: 1.2rem;
+    margin-bottom: 0.2rem;
+  }
+
+  .profile-block-sub {
+    font-size: 0.85rem;
+    color: var(--muted);
+    margin-bottom: 0.8rem;
+  }
+
+  .profile-list {
+    list-style: none;
+    display: flex;
+    flex-direction: column;
+    gap: 0.4rem;
+  }
+
+  .profile-list li {
+    font-size: 0.9rem;
+    color: #3d3a36;
+    padding-left: 1rem;
+    position: relative;
+  }
+
+  .profile-list li::before {
+    content: '—';
+    position: absolute;
+    left: 0;
+    color: var(--muted);
+    font-size: 0.8rem;
+  }
+
+  .skills-tags {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.5rem;
+    margin-top: 0.5rem;
+  }
+
+  .skill-tag {
+    font-size: 0.75rem;
+    letter-spacing: 0.04em;
+    padding: 0.3rem 0.75rem;
+    background: var(--ink);
+    color: var(--paper);
+    font-weight: 400;
+  }
+
+  /* INTERNSHIP SECTION */
+  .internship-section {
+    background: #faf7f2;
+    padding: 4rem;
+    border-bottom: 1px solid rgba(15,14,12,0.1);
+  }
+
+  .internship-inner {
+    display: grid;
+    grid-template-columns: 1fr 2fr;
+    gap: 5rem;
+    align-items: start;
+  }
+
+  .internship-card {
+    border: 1px solid rgba(15,14,12,0.12);
+    padding: 2.5rem;
+    background: var(--paper);
+  }
+
+  .internship-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-start;
+    margin-bottom: 2rem;
+    gap: 1rem;
+  }
+
+  .internship-title {
+    font-family: 'Syne', sans-serif;
+    font-weight: 700;
+    font-size: 1.1rem;
+    margin-bottom: 0.3rem;
+  }
+
+  .internship-company {
+    font-size: 0.85rem;
+    color: #3d3a36;
+    margin-bottom: 0.2rem;
+  }
+
+  .internship-location {
+    font-size: 0.8rem;
+    color: var(--muted);
+  }
+
+  .internship-badge {
+    flex-shrink: 0;
+    background: var(--accent3);
+    color: var(--ink);
+    font-size: 0.7rem;
+    font-weight: 500;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    padding: 0.3rem 0.75rem;
+  }
+
+  .internship-tasks {
+    display: flex;
+    flex-direction: column;
+    gap: 1.2rem;
+  }
+
+  .task-item {
+    display: flex;
+    gap: 1rem;
+    font-size: 0.9rem;
+    line-height: 1.7;
+    color: #3d3a36;
+    align-items: flex-start;
+  }
+
+  .task-dot {
+    width: 8px;
+    height: 8px;
+    border-radius: 50%;
+    flex-shrink: 0;
+    margin-top: 0.55rem;
+  }
+
+  /* RESPONSIVE additions */
+  @media (max-width: 768px) {
+    .profile-section { padding: 3rem 2rem; }
+    .profile-grid { grid-template-columns: 1fr; gap: 2rem; }
+    .profile-left { position: static; }
+    .internship-section { padding: 3rem 2rem; }
+    .internship-inner { grid-template-columns: 1fr; gap: 1.5rem; }
+    .internship-header { flex-direction: column; }
+  }
+
+
+  @keyframes fadeUp {
+    from { opacity: 0; transform: translateY(30px); }
+    to { opacity: 1; transform: translateY(0); }
+  }
+
+  .hero-tag { animation: fadeUp 0.6s ease 0.1s both; }
+  .hero h1 { animation: fadeUp 0.8s ease 0.25s both; }
+  .hero-sub { animation: fadeUp 0.8s ease 0.45s both; }
+
+  /* RESPONSIVE */
+  @media (max-width: 768px) {
+    header { padding: 1.5rem 2rem; }
+    nav { display: none; }
+    .hero { padding: 2rem 2rem 4rem; }
+    .intro-band { grid-template-columns: 1fr; padding: 3rem 2rem; gap: 2rem; }
+    .activities { padding: 4rem 2rem; }
+    .activity { grid-template-columns: 1fr; gap: 1.5rem; }
+    .activity-number { font-size: 3rem; }
+    .closing { grid-template-columns: 1fr; padding: 4rem 2rem; }
+    footer { padding: 2rem; flex-direction: column; gap: 1rem; text-align: center; }
+    .stat-row { gap: 2rem; }
+  }
+</style>
+</head>
+<body>
+
+<div id="cursor"></div>
+
+<!-- HEADER -->
+<header>
+  <div class="logo">SHANG Xiuchang &nbsp;·&nbsp; 2024–2025</div>
+  <nav>
+    <a href="#eco">Eco-Mode</a>
+    <a href="#code">TimeManager</a>
+    <a href="#ia">IA & Travail</a>
+  </nav>
+</header>
+
+<!-- HERO -->
+<section class="hero">
+  <div class="hero-bg-text">PORT<br>FOLIO</div>
+  <div class="hero-tag">Année universitaire 2024–2025</div>
+  <h1>Trois <em>activités,</em><br>une trajectoire.</h1>
+  <div class="hero-sub">
+    <p class="hero-desc">
+      <strong>SHANG Xiuchang</strong> — Étudiante en BUT GEA, parcours CG2P,<br>
+      IUT de Sceaux · Université Paris-Saclay.<br><br>
+      Cette année, j'ai organisé, construit et analysé — 
+      trois façons différentes d'apprendre en faisant.
+    </p>
+    <div class="hero-scroll">Défiler</div>
+  </div>
+</section>
+
+<!-- PROFILE SECTION -->
+<section class="profile-section">
+  <div class="profile-grid">
+
+    <div class="profile-left">
+      <div class="profile-avatar">XS</div>
+      <div class="profile-name-block">
+        <h2 class="profile-name">SHANG<br><em>Xiuchang</em></h2>
+        <div class="profile-contact">
+          <span>📍 Sceaux, Paris 92330</span>
+          <span>✉️ xiuchang.shang@universite-paris-saclay.fr</span>
+        </div>
+      </div>
+    </div>
+
+    <div class="profile-right">
+      <div class="profile-block">
+        <div class="profile-block-label">Formation</div>
+        <div class="profile-block-title">BUT GEA — Parcours CG2P</div>
+        <div class="profile-block-sub">IUT de Sceaux · Université Paris-Saclay</div>
+        <ul class="profile-list">
+          <li>Comptabilité financière & de gestion</li>
+          <li>Fiscalité · Droit des affaires · Économie (micro & macro)</li>
+        </ul>
+      </div>
+
+      <div class="profile-block">
+        <div class="profile-block-label">Compétences numériques</div>
+        <div class="skills-tags">
+          <span class="skill-tag">Excel (VLOOKUP, Power Pivot)</span>
+          <span class="skill-tag">Power BI</span>
+          <span class="skill-tag">Sage 100</span>
+          <span class="skill-tag">Trello</span>
+          <span class="skill-tag">Asana</span>
+          <span class="skill-tag">Flutter</span>
+          <span class="skill-tag">GitHub</span>
+          <span class="skill-tag">VS Code</span>
+        </div>
+      </div>
+    </div>
+
+  </div>
+</section>
+
+<!-- INTERNSHIP SECTION -->
+<section class="internship-section">
+  <div class="internship-inner">
+    <div class="internship-label">
+      <span class="section-label" style="margin-bottom:0">Expérience professionnelle</span>
+    </div>
+    <div class="internship-card">
+      <div class="internship-header">
+        <div>
+          <div class="internship-title">Stagiaire — Analyse financière & RH</div>
+          <div class="internship-company">Youku · Groupe Alibaba &nbsp;·&nbsp; Agence de marketing digital</div>
+          <div class="internship-location">Pékin, Chine &nbsp;·&nbsp; Avril – Juin 2025</div>
+        </div>
+        <div class="internship-badge">Stage</div>
+      </div>
+      <div class="internship-tasks">
+        <div class="task-item">
+          <div class="task-dot" style="background:var(--accent1)"></div>
+          <div>
+            <strong>Analyse financière</strong> — Réalisation autonome de l'analyse et de la visualisation des données (Excel, PPT) : rentabilité, coûts fixes/variables, ROI.
+          </div>
+        </div>
+        <div class="task-item">
+          <div class="task-dot" style="background:var(--accent2)"></div>
+          <div>
+            <strong>Reporting & Comptabilité</strong> — Préparation indépendante de la déclaration financière annuelle : classification des dépenses, contrôle des justificatifs, détection d'anomalies.
+          </div>
+        </div>
+        <div class="task-item">
+          <div class="task-dot" style="background:#2d7a2d"></div>
+          <div>
+            <strong>RH & Recrutement</strong> — Participation au processus complet pour des postes financiers et marketing : tri des CV, échanges candidats, conduite d'entretiens.
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- INTRO BAND -->
+<div class="intro-band">
+  <h2>Ce que cette année<br>m'a <span>appris.</span></h2>
+  <p class="intro-text">
+    Trois activités en apparence très différentes — un projet associatif, une application codée de zéro, une analyse critique de l'IA — mais reliées par un même fil : 
+    la conviction que apprendre vraiment, c'est toujours prendre un risque, proposer quelque chose, et assumer le résultat.
+  </p>
+</div>
+
+<!-- ACTIVITIES -->
+<section class="activities">
+  <div class="section-label">Activités sélectionnées</div>
+
+  <!-- ACTIVITY 1: ECO-MODE -->
+  <div class="activity" id="eco">
+    <div class="activity-meta">
+      <div class="activity-number">01</div>
+      <span class="activity-tag tag-green">Projet tutoré</span>
+    </div>
+    <div class="activity-content">
+      <h3>Eco-Mode</h3>
+      <p class="subtitle">Faire circuler plutôt que consommer</p>
+
+      <div class="quote-block">
+        <blockquote>« Ce monde regorge déjà de richesses matérielles. Ce dont nous avons besoin, ce n'est pas d'acheter davantage, mais de faire circuler ce qui existe déjà. »</blockquote>
+      </div>
+
+      <p>
+        Dans le cadre du projet tutoré, j'ai rejoint un groupe de trois étudiants pour co-construire <strong>Eco-Mode</strong>, un projet centré sur la mode durable et la consommation responsable.
+      </p>
+      <p>
+        L'idée de l'échange de vêtements entre étudiants vient de moi. J'ai également conçu les affiches pour les deux événements organisés cette année.
+      </p>
+
+      <div class="stat-row">
+        <div class="stat">
+          <span class="stat-num">~10</span>
+          <span class="stat-label">participants — visite Emmaüs</span>
+        </div>
+        <div class="stat">
+          <span class="stat-num">20+</span>
+          <span class="stat-label">participants — échange de vêtements</span>
+        </div>
+      </div>
+
+      <div class="highlight-box green">
+        <strong>Ce que j'ai retenu :</strong> une idée simple, bien exécutée, peut changer les habitudes. 
+        La durabilité ne demande pas toujours de l'innovation spectaculaire — parfois, il suffit de réorganiser ce qui existe déjà.
+      </div>
+    </div>
+  </div>
+
+  <!-- ACTIVITY 2: TIMEMANAGER -->
+  <div class="activity" id="code">
+    <div class="activity-meta">
+      <div class="activity-number">02</div>
+      <span class="activity-tag tag-blue">Apprentissage autonome</span>
+    </div>
+    <div class="activity-content">
+      <h3>TimeManager</h3>
+      <p class="subtitle">De l'idée au prototype en une semaine</p>
+
+      <p>
+        Tout a commencé par une frustration : les applications de gestion du temps existantes demandent trop d'étapes. Pour quelqu'un avec des tendances TDAH ou de la procrastination, ce processus est déjà un obstacle.
+      </p>
+      <p>
+        J'ai imaginé une interface où l'on <strong>dessine directement ses blocs de temps sur une ligne temporelle, par gestes</strong>. Plus rapide, plus intuitif.
+        Problème : je ne savais pas coder.
+      </p>
+      <p>
+        En une semaine, en utilisant l'IA comme partenaire de travail, j'ai appris à utiliser <strong>VS Code</strong>, compris la logique d'un terminal, écrit du code <strong>Flutter</strong>, et déployé un prototype fonctionnel via <strong>GitHub</strong>.
+      </p>
+
+      <div class="highlight-box blue">
+        <strong>Ce que j'ai retenu :</strong> utiliser l'IA efficacement n'est pas passif. Cela demande du jugement, de la rigueur, 
+        et une vraie capacité à comprendre ce qu'on construit — pas seulement à donner des instructions.
+      </div>
+    </div>
+  </div>
+
+  <!-- ACTIVITY 3: AI PRESENTATION -->
+  <div class="activity" id="ia">
+    <div class="activity-meta">
+      <div class="activity-number">03</div>
+      <span class="activity-tag tag-orange">Cours d'anglais</span>
+    </div>
+    <div class="activity-content">
+      <h3>L'IA va-t-elle nous remplacer ?</h3>
+      <p class="subtitle">Une analyse critique — à contre-courant</p>
+
+      <p>
+        En binôme, nous avons réalisé une présentation sur l'impact de l'IA sur l'emploi. À rebours des discours optimistes, nous avons défendu une thèse plus nuancée : l'IA risque d'<strong>accélérer la polarisation économique</strong> et de créer une nouvelle classe de travailleurs sans perspectives de reconversion.
+      </p>
+      <p>
+        Nos sources : un rapport <strong>McKinsey</strong> sur les compétences à l'ère de l'IA, et des déclarations du PDG d'Anthropic alertant sur l'émergence d'une « underclass » de travailleurs à très bas salaires.
+      </p>
+
+      <div class="highlight-box">
+        <strong>Ce que j'ai retenu :</strong> je suis moi-même utilisatrice quotidienne de l'IA. 
+        Défendre la thèse de ses risques tout en l'utilisant pour apprendre à coder — ce n'est pas une contradiction. 
+        C'est, je crois, la posture la plus honnête qu'on puisse adopter face à cette technologie.
+      </div>
+    </div>
+  </div>
+
+</section>
+
+<!-- CLOSING BAND -->
+<div class="closing">
+  <h2>Apprendre en <em>faisant.</em><br>Penser en <em>agissant.</em></h2>
+  <p class="closing-text">
+    Ces trois activités ne sont pas des cases cochées. Ce sont trois façons d'avoir mis mes idées à l'épreuve du réel — 
+    avec les doutes, les erreurs, et les ajustements que cela implique. 
+    C'est ce que cette année m'a appris de plus précieux.
+  </p>
+</div>
+
+<!-- FOOTER -->
+<footer>
+  <span>SHANG Xiuchang — Portfolio 2024–2025</span>
+  <span>xiuchang.shang@universite-paris-saclay.fr</span>
+</footer>
+
+<script>
+  // Custom cursor
+  const cursor = document.getElementById('cursor');
+  document.addEventListener('mousemove', e => {
+    cursor.style.left = e.clientX + 'px';
+    cursor.style.top = e.clientY + 'px';
+  });
+  document.querySelectorAll('a, button').forEach(el => {
+    el.addEventListener('mouseenter', () => {
+      cursor.style.width = '28px';
+      cursor.style.height = '28px';
+      cursor.style.background = '#0047ff';
+    });
+    el.addEventListener('mouseleave', () => {
+      cursor.style.width = '12px';
+      cursor.style.height = '12px';
+      cursor.style.background = '#ff4d1c';
+    });
+  });
+
+  // Scroll reveal
+  const observer = new IntersectionObserver(entries => {
+    entries.forEach(entry => {
+      if (entry.isIntersecting) {
+        entry.target.classList.add('visible');
+      }
+    });
+  }, { threshold: 0.1 });
+
+  document.querySelectorAll('.activity').forEach(el => observer.observe(el));
+</script>
+</body>
+</html>
