@@ -361,6 +361,21 @@
     color: var(--muted);
   }
 
+  .activity-image {
+    margin: 2rem 0;
+    width: 100%;
+    max-width: 560px;
+    overflow: hidden;
+    border: 1px solid rgba(15,14,12,0.1);
+  }
+
+  .activity-image img {
+    width: 100%;
+    display: block;
+    object-fit: cover;
+    max-height: 320px;
+  }
+
   .quote-block {
     margin: 2rem 0;
     padding: 1.5rem 0;
@@ -669,10 +684,10 @@
 
 <!-- HEADER -->
 <header>
-  <div class="logo">SHANG Xiuchang &nbsp;·&nbsp; 2025–2026</div>
+  <div class="logo">SHANG Xiuchang &nbsp;·&nbsp; 2024–2025</div>
   <nav>
     <a href="#eco">Eco-Mode</a>
-    <a href="#code">TimeManager</a>
+    <a href="#code">Bookshelf</a>
     <a href="#ia">IA & Travail</a>
   </nav>
 </header>
@@ -680,7 +695,7 @@
 <!-- HERO -->
 <section class="hero">
   <div class="hero-bg-text">PORT<br>FOLIO</div>
-  <div class="hero-tag">Année universitaire 2025–2026</div>
+  <div class="hero-tag">Année universitaire 2024–2025</div>
   <h1>Trois <em>activités,</em><br>une trajectoire.</h1>
   <div class="hero-sub">
     <p class="hero-desc">
@@ -812,13 +827,17 @@
 
       <div class="stat-row">
         <div class="stat">
-          <span class="stat-num">～10</span>
+          <span class="stat-num">~10</span>
           <span class="stat-label">participants — visite Emmaüs</span>
         </div>
         <div class="stat">
           <span class="stat-num">20+</span>
           <span class="stat-label">participants — échange de vêtements</span>
         </div>
+      </div>
+
+      <div class="activity-image">
+        <img src="images/ecomode.jpg" alt="Aperçu du projet Eco-Mode" onerror="this.parentElement.style.display='none'">
       </div>
 
       <div class="highlight-box green">
@@ -828,30 +847,32 @@
     </div>
   </div>
 
-  <!-- ACTIVITY 2: TIMEMANAGER -->
+  <!-- ACTIVITY 2: BOOKSHELF -->
   <div class="activity" id="code">
     <div class="activity-meta">
       <div class="activity-number">02</div>
       <span class="activity-tag tag-blue">Apprentissage autonome</span>
     </div>
     <div class="activity-content">
-      <h3>TimeManager</h3>
-      <p class="subtitle">De l'idée au prototype en une semaine</p>
+      <h3>Bookshelf</h3>
+      <p class="subtitle">Construire l'outil qui me manquait</p>
 
       <p>
-        Tout a commencé par une frustration : les applications de gestion du temps existantes demandent trop d'étapes. Pour quelqu'un avec des tendances TDAH ou de la procrastination, ce processus est déjà un obstacle.
+        Je lis de plusieurs façons — livres numériques, papier, emprunts — et je n'avais aucun endroit pour centraliser tout ça. J'ai donc décidé de créer <strong>Bookshelf</strong> : une bibliothèque personnelle en ligne, où je peux rechercher un livre, récupérer automatiquement sa couverture via l'API <strong>Open Library</strong>, et l'ajouter à mon étagère virtuelle.
       </p>
       <p>
-        J'ai imaginé une interface où l'on <strong>dessine directement ses blocs de temps sur une ligne temporelle, par gestes</strong>. Plus rapide, plus intuitif.
-        Problème : je ne savais pas coder.
+        Le projet a été entièrement développé sur <strong>GitHub</strong>, directement dans l'éditeur en ligne. La fonctionnalité qui m'a demandé le plus de travail : le <strong>stockage local</strong>. Ma bibliothèque devait persister d'une session à l'autre. J'ai consulté l'IA pour comprendre comment implémenter cette fonctionnalité — mais c'est moi qui ai modifié le code directement, après avoir compris la logique.
       </p>
       <p>
-        En une semaine, en utilisant l'IA comme partenaire de travail, j'ai appris à utiliser <strong>VS Code</strong>, compris la logique d'un terminal, écrit du code <strong>Flutter</strong>, et déployé un prototype fonctionnel via <strong>GitHub</strong>.
+        Le site est aujourd'hui fonctionnel et je l'utilise au quotidien. Des améliorations restent à venir — notamment une fonctionnalité de <strong>critiques de livres</strong>. Une limite existe : les livres absents d'Open Library, souvent des éditions en chinois, ne peuvent pas être ajoutés.
       </p>
+
+      <div class="activity-image">
+        <img src="images/bookshelf.jpg" alt="Aperçu du site Bookshelf" onerror="this.parentElement.style.display='none'">
+      </div>
 
       <div class="highlight-box blue">
-        <strong>Ce que j'ai retenu :</strong> utiliser l'IA efficacement n'est pas passif. Cela demande du jugement, de la rigueur, 
-        et une vraie capacité à comprendre ce qu'on construit — pas seulement à donner des instructions.
+        <strong>Ce que j'ai retenu :</strong> utiliser l'IA comme point de départ, puis modifier le code soi-même, c'est très différent de simplement copier-coller une réponse. Comprendre ce qu'on change — et pourquoi — c'est là que l'apprentissage se passe vraiment.
       </div>
     </div>
   </div>
@@ -872,6 +893,10 @@
       <p>
         Nos sources : un rapport <strong>McKinsey</strong> sur les compétences à l'ère de l'IA, et des déclarations du PDG d'Anthropic alertant sur l'émergence d'une « underclass » de travailleurs à très bas salaires.
       </p>
+
+      <div class="activity-image">
+        <img src="images/ia.jpg" alt="Aperçu de la présentation IA & Travail" onerror="this.parentElement.style.display='none'">
+      </div>
 
       <div class="highlight-box">
         <strong>Ce que j'ai retenu :</strong> je suis moi-même utilisatrice quotidienne de l'IA. 
