@@ -336,7 +336,8 @@
 
   .stat-row {
     display: flex;
-    gap: 3rem;
+    flex-wrap: wrap;
+    gap: 2rem 2.5rem;
     margin-top: 2rem;
   }
 
@@ -684,7 +685,7 @@
 
 <!-- HEADER -->
 <header>
-  <div class="logo">SHANG Xiuchang &nbsp;·&nbsp; 2024–2025</div>
+  <div class="logo">SHANG Xiuchang &nbsp;·&nbsp; 2025–2026</div>
   <nav>
     <a href="#eco">Eco-Mode</a>
     <a href="#code">Bookshelf</a>
@@ -695,7 +696,7 @@
 <!-- HERO -->
 <section class="hero">
   <div class="hero-bg-text">PORT<br>FOLIO</div>
-  <div class="hero-tag">Année universitaire 2024–2025</div>
+  <div class="hero-tag">Année universitaire 2025–2026</div>
   <h1>Trois <em>activités,</em><br>une trajectoire.</h1>
   <div class="hero-sub">
     <p class="hero-desc">
@@ -758,35 +759,70 @@
     <div class="internship-label">
       <span class="section-label" style="margin-bottom:0">Expérience professionnelle</span>
     </div>
-    <div class="internship-card">
-      <div class="internship-header">
-        <div>
-          <div class="internship-title">Stagiaire — Analyse financière & RH</div>
-          <div class="internship-company">Youku · Groupe Alibaba &nbsp;·&nbsp; Agence de marketing digital</div>
-          <div class="internship-location">Pékin, Chine &nbsp;·&nbsp; Avril – Juin 2025</div>
+    <div style="display:flex; flex-direction:column; gap:1.5rem;">
+
+      <div class="internship-card">
+        <div class="internship-header">
+          <div>
+            <div class="internship-title">Stagiaire — Finance & Gestion administrative des fonds</div>
+            <div class="internship-company">HEYI Capital &nbsp;·&nbsp; Société de gestion de fonds de Private Equity</div>
+            <div class="internship-location">Pékin, Chine &nbsp;·&nbsp; 2025/2026</div>
+          </div>
+          <div class="internship-badge">Stage en cours</div>
         </div>
-        <div class="internship-badge">Stage</div>
+        <div class="internship-tasks">
+          <div class="task-item">
+            <div class="task-dot" style="background:var(--accent1)"></div>
+            <div>
+              <strong>Administration de fonds</strong> — Participation à la constitution de fonds, reporting trimestriel et annuel sur plusieurs fonds.
+            </div>
+          </div>
+          <div class="task-item">
+            <div class="task-dot" style="background:var(--accent2)"></div>
+            <div>
+              <strong>Comptabilité & Fiscalité</strong> — Déclarations fiscales, tenue de comptabilité sur le logiciel Yonyou.
+            </div>
+          </div>
+          <div class="task-item">
+            <div class="task-dot" style="background:#2d7a2d"></div>
+            <div>
+              <strong>Missions juridiques en autonomie</strong> — Plateforme d'actionnariat salarié et dossier de cession de parts.
+            </div>
+          </div>
+        </div>
       </div>
-      <div class="internship-tasks">
-        <div class="task-item">
-          <div class="task-dot" style="background:var(--accent1)"></div>
+
+      <div class="internship-card">
+        <div class="internship-header">
           <div>
-            <strong>Analyse financière</strong> — Réalisation autonome de l'analyse et de la visualisation des données (Excel, PPT) : rentabilité, coûts fixes/variables, ROI.
+            <div class="internship-title">Stagiaire — Analyse financière & RH</div>
+            <div class="internship-company">Youku · Groupe Alibaba &nbsp;·&nbsp; Agence de marketing digital</div>
+            <div class="internship-location">Pékin, Chine &nbsp;·&nbsp; Avril – Juin 2025</div>
           </div>
+          <div class="internship-badge">Stage</div>
         </div>
-        <div class="task-item">
-          <div class="task-dot" style="background:var(--accent2)"></div>
-          <div>
-            <strong>Reporting & Comptabilité</strong> — Préparation indépendante de la déclaration financière annuelle : classification des dépenses, contrôle des justificatifs, détection d'anomalies.
+        <div class="internship-tasks">
+          <div class="task-item">
+            <div class="task-dot" style="background:var(--accent1)"></div>
+            <div>
+              <strong>Analyse financière</strong> — Réalisation autonome de l'analyse et de la visualisation des données (Excel, PPT) : rentabilité, coûts fixes/variables, ROI.
+            </div>
           </div>
-        </div>
-        <div class="task-item">
-          <div class="task-dot" style="background:#2d7a2d"></div>
-          <div>
-            <strong>RH & Recrutement</strong> — Participation au processus complet pour des postes financiers et marketing : tri des CV, échanges candidats, conduite d'entretiens.
+          <div class="task-item">
+            <div class="task-dot" style="background:var(--accent2)"></div>
+            <div>
+              <strong>Reporting & Comptabilité</strong> — Préparation indépendante de la déclaration financière annuelle : classification des dépenses, contrôle des justificatifs, détection d'anomalies.
+            </div>
+          </div>
+          <div class="task-item">
+            <div class="task-dot" style="background:#2d7a2d"></div>
+            <div>
+              <strong>RH & Recrutement</strong> — Participation au processus complet pour des postes financiers et marketing : tri des CV, échanges candidats, conduite d'entretiens.
+            </div>
           </div>
         </div>
       </div>
+
     </div>
   </div>
 </section>
@@ -822,7 +858,10 @@
         Dans le cadre du projet tutoré, j'ai rejoint un groupe de trois étudiants pour co-construire <strong>Eco-Mode</strong>, un projet centré sur la mode durable et la consommation responsable.
       </p>
       <p>
-        L'idée de l'échange de vêtements entre étudiants vient de moi. J'ai également conçu les affiches pour les deux événements organisés cette année.
+        L'idée de l'échange de vêtements entre étudiants vient de moi. J'ai également conçu les affiches pour les événements organisés cette année.
+      </p>
+      <p>
+        Le troisième événement, deux <strong>ateliers de upcycling</strong>, a été notre plus grande réussite. Nous avons récupéré des jeans auprès d'Emmaüs en amont, puis organisé deux séances où les participants transformaient ces jeans en sacs. J'ai pris en charge l'<strong>enseignement</strong> pendant les ateliers, ainsi que le tournage de la <strong>vidéo de promotion</strong> de l'événement.
       </p>
 
       <div class="stat-row">
@@ -834,6 +873,14 @@
           <span class="stat-num">20+</span>
           <span class="stat-label">participants — échange de vêtements</span>
         </div>
+        <div class="stat">
+          <span class="stat-num">40+</span>
+          <span class="stat-label">participants — ateliers upcycling</span>
+        </div>
+        <div class="stat">
+          <span class="stat-num">25</span>
+          <span class="stat-label">sacs en jean réalisés</span>
+        </div>
       </div>
 
       <div class="activity-image">
@@ -841,8 +888,8 @@
       </div>
 
       <div class="highlight-box green">
-        <strong>Ce que j'ai retenu :</strong> une idée simple, bien exécutée, peut changer les habitudes. 
-        La durabilité ne demande pas toujours de l'innovation spectaculaire — parfois, il suffit de réorganiser ce qui existe déjà.
+        <strong>Ce que j'ai retenu :</strong> au-delà de la satisfaction de donner une seconde vie à ces vêtements, 
+        ce qui m'a le plus marquée, c'est de voir chaque participante repartir fière de son sac, fait par elle-même.
       </div>
     </div>
   </div>
@@ -920,7 +967,7 @@
 
 <!-- FOOTER -->
 <footer>
-  <span>SHANG Xiuchang — Portfolio 2024–2025</span>
+  <span>SHANG Xiuchang — Portfolio 2025–2026</span>
   <span>xiuchang.shang@universite-paris-saclay.fr</span>
 </footer>
 
