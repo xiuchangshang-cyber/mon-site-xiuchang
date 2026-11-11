@@ -3,9 +3,12 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Portfolio — SHANG Xiuchang</title>
+<title>SHANG Xiuchang — Portfolio</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Syne:wght@400;700;800&family=Instrument+Serif:ital@0;1&family=DM+Sans:wght@300;400;500&display=swap" rel="stylesheet">
 <style>
+
   *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
 
   :root {
@@ -25,6 +28,7 @@
     font-family: 'DM Sans', sans-serif;
     font-weight: 300;
     overflow-x: hidden;
+    transition: background .5s, color .5s;
   }
 
   /* NOISE OVERLAY */
@@ -39,7 +43,7 @@
   }
 
   /* CURSOR */
-  * { cursor: none; }
+
   #cursor {
     position: fixed;
     width: 12px; height: 12px;
@@ -63,6 +67,7 @@
     z-index: 100;
     background: var(--paper);
     border-bottom: 1px solid rgba(15,14,12,0.1);
+    transition: background .5s;
   }
 
   .logo {
@@ -192,6 +197,7 @@
     grid-template-columns: 1fr 1.6fr;
     gap: 6rem;
     align-items: center;
+    transition: background .5s;
   }
 
   .intro-band h2 {
@@ -435,7 +441,10 @@
     letter-spacing: 0.05em;
     text-transform: uppercase;
     color: var(--muted);
+    flex-wrap: wrap;
+    gap: 1rem;
   }
+  footer a { color: inherit; }
 
   /* PROFILE SECTION */
   .profile-section {
@@ -496,6 +505,22 @@
     color: var(--muted);
     line-height: 1.6;
   }
+  .profile-contact a { color: var(--muted); text-decoration: none; border-bottom: 1px dotted currentColor; }
+  .profile-contact a:hover { color: var(--accent1); }
+
+  .cv-btn {
+    display: inline-block;
+    background: var(--ink);
+    color: var(--paper);
+    font: 500 .8rem 'DM Sans', sans-serif;
+    letter-spacing: .08em;
+    text-transform: uppercase;
+    padding: .7rem 1.2rem;
+    text-decoration: none;
+    width: fit-content;
+    transition: background .2s, color .2s;
+  }
+  .cv-btn:hover { background: var(--accent1); color: var(--ink); }
 
   .profile-right {
     display: flex;
@@ -548,6 +573,8 @@
     font-size: 0.8rem;
   }
 
+  .profile-list li strong { font-weight: 500; }
+
   .skills-tags {
     display: flex;
     flex-wrap: wrap;
@@ -564,11 +591,30 @@
     font-weight: 400;
   }
 
+  .skill-group-label {
+    font-size: .72rem;
+    letter-spacing: .08em;
+    text-transform: uppercase;
+    color: var(--muted);
+    margin: .8rem 0 .1rem;
+  }
+
+  /* LANGUAGE BARS */
+  .lang-row { display: grid; grid-template-columns: 9rem 1fr; gap: 1rem; align-items: center; margin-bottom: .7rem; }
+  .lang-name { font-size: .88rem; }
+  .lang-name small { display: block; color: var(--muted); font-size: .72rem; }
+  .lang-bar { height: 8px; background: rgba(15,14,12,.08); position: relative; overflow: hidden; }
+  .lang-bar i { position: absolute; inset: 0 auto 0 0; background: var(--accent1); }
+  .lang-row:nth-child(2) .lang-bar i { background: var(--accent2); }
+  .lang-row:nth-child(3) .lang-bar i { background: #2d7a2d; }
+  .lang-row:nth-child(4) .lang-bar i { background: var(--accent3); }
+
   /* INTERNSHIP SECTION */
   .internship-section {
     background: #faf7f2;
     padding: 4rem;
     border-bottom: 1px solid rgba(15,14,12,0.1);
+    transition: background .5s;
   }
 
   .internship-inner {
@@ -644,6 +690,19 @@
     margin-top: 0.55rem;
   }
 
+  .avail-banner {
+    background: var(--ink);
+    color: var(--paper);
+    padding: 1rem 1.5rem;
+    font-size: .85rem;
+    letter-spacing: .04em;
+    display: flex;
+    flex-wrap: wrap;
+    gap: .5rem 2rem;
+    align-items: center;
+  }
+  .avail-banner b { color: var(--accent3); font-weight: 500; }
+
   /* RESPONSIVE additions */
   @media (max-width: 768px) {
     .profile-section { padding: 3rem 2rem; }
@@ -652,6 +711,7 @@
     .internship-section { padding: 3rem 2rem; }
     .internship-inner { grid-template-columns: 1fr; gap: 1.5rem; }
     .internship-header { flex-direction: column; }
+    .internship-card { padding: 1.5rem; }
   }
 
 
@@ -677,39 +737,270 @@
     footer { padding: 2rem; flex-direction: column; gap: 1rem; text-align: center; }
     .stat-row { gap: 2rem; }
   }
+
+/* ---- v2 additions ---- */
+.activity{opacity:1!important;transform:none!important}
+html[lang=fr] .tr-only,html:not([lang=fr]) .fr-only{display:none}
+.view{display:none}.view.on{display:block}
+header{padding:1.2rem 2rem}
+header .logo{background:none;border:0;font:inherit;color:inherit;text-transform:inherit;letter-spacing:inherit;cursor:pointer;font-family:'Syne',sans-serif;font-weight:800;text-transform:uppercase;font-size:.95rem}
+.hbar{display:flex;gap:.6rem;align-items:center;flex-wrap:wrap}
+.pill{border:1px solid rgba(15,14,12,.25);background:none;color:var(--ink);font:500 .78rem 'DM Sans',sans-serif;padding:.4rem .8rem;border-radius:99px;cursor:pointer}
+.pill:hover,.pill.on{background:var(--ink);color:var(--paper)}
+.pill.hot{background:var(--accent3);border-color:var(--accent3)}
+#back{display:none}
+body.sub #back{display:inline-block}
+::focus-visible{outline:3px solid var(--accent2);outline-offset:3px}
+#gate{position:fixed;inset:0;z-index:2000;background:var(--paper);display:flex;flex-direction:column;align-items:center;justify-content:center;gap:2rem;padding:2rem;text-align:center}
+#gate.off{display:none}
+#gate h1{font-family:'Instrument Serif',serif;font-weight:400;font-size:clamp(2rem,6vw,4rem);line-height:1.05}
+#gate .opts{display:flex;gap:1rem;flex-wrap:wrap;justify-content:center}
+#gate button{font:800 clamp(1.4rem,4vw,2.4rem) 'Syne',sans-serif;border:2px solid var(--ink);background:var(--paper);color:var(--ink);padding:.9rem 1.8rem;cursor:pointer;transition:transform .15s,background .15s}
+#gate button:nth-child(1):hover{background:var(--accent1)}#gate button:nth-child(2):hover{background:var(--accent3)}#gate button:nth-child(3):hover{background:#9db8ff}
+#gate button:hover{transform:translateY(-4px) rotate(-1.5deg)}
+.home{padding:1.5rem 2rem 3rem;max-width:980px;margin:0 auto;text-align:center}
+.home h1{font-family:'Syne',sans-serif;font-weight:800;font-size:clamp(2rem,5vw,3.6rem);letter-spacing:-.03em;line-height:1;margin:.5rem 0 1rem}
+.home p{max-width:60ch;margin:0 auto 1.2rem;line-height:1.7;color:#4a4743}
+.room-wrap{max-width:980px;margin:0 auto;perspective:900px}
+.room{width:100%;height:auto;display:block;margin:1rem 0;transition:transform .45s cubic-bezier(.22,.9,.35,1);transform-origin:0 0;will-change:transform}
+.obj{cursor:pointer;transition:transform .25s;outline:none}
+.obj:hover{transform:translateY(-4px)}
+.lab{font:700 15px 'Syne',sans-serif;fill:var(--ink);opacity:0;transition:opacity .2s;pointer-events:none}
+.obj:hover .lab,.obj:focus .lab{opacity:1}
+@media (hover:none){.lab{opacity:1}}
+footer{margin-top:2rem}
+
+/* ---- v3 : room life ---- */
+.room #LB{transform:translate(calc(var(--px,0)*-7px),calc(var(--py,0)*-4px))}
+.room #LM{transform:translate(calc(var(--px,0)*0px),calc(var(--py,0)*0px))}
+.room #LF{transform:translate(calc(var(--px,0)*9px),calc(var(--py,0)*5px))}
+.clouds{animation:drift 14s ease-in-out infinite alternate}
+@keyframes drift{from{transform:translateX(-18px)}to{transform:translateX(26px)}}
+.steam{animation:steam 2.6s ease-in-out infinite;transform-origin:center bottom}
+.steam.s2{animation-delay:1.3s}
+@keyframes steam{0%{opacity:0;transform:translateY(4px)}35%{opacity:.55}100%{opacity:0;transform:translateY(-9px)}}
+.tail{transform-origin:196px 400px;animation:tail 2.6s ease-in-out infinite alternate}
+@keyframes tail{from{transform:rotate(-7deg)}to{transform:rotate(9deg)}}
+.blink{animation:blink 1.1s steps(1) infinite}
+@keyframes blink{50%{opacity:0}}
+.glow{transition:opacity .4s}
+body.lampoff .glow{opacity:0!important}
+.obj:hover .book{transform:translateY(-4px)}
+.book{transition:transform .2s}
+.book:nth-of-type(2n){transition-delay:.05s}
+.book:nth-of-type(3n){transition-delay:.1s}
+#winObj:hover #sun,#winObj:focus #sun{animation:pulse 1.6s ease-in-out infinite alternate}
+@keyframes pulse{to{transform:scale(1.18)}}
+#sun{transform-origin:680px 82px;transition:opacity .5s,transform .5s}
+#moon{opacity:0;transition:opacity .5s}
+#stars circle{opacity:0;transition:opacity .5s}
+body.night #sun{opacity:0}
+body.night #moon{opacity:1}
+body.night #stars circle{opacity:1;animation:twinkle 2.4s ease-in-out infinite alternate}
+#stars circle:nth-child(2n){animation-delay:.8s}
+#stars circle:nth-child(3n){animation-delay:1.4s}
+@keyframes twinkle{to{opacity:.25}}
+body.night #sky{fill:#182036}
+body.night #wall{fill:#292620}
+body.night #floor{fill:#3b342a}
+body.night #rug{fill:#b8401e}
+.catjump{animation:catjump .5s ease}
+@keyframes catjump{40%{transform:translateY(-14px)}}
+.flicker{animation:flicker .5s linear 2}
+@keyframes flicker{0%,100%{opacity:1}50%{opacity:.2}}
+
+/* toast + dots */
+#toast{position:fixed;left:50%;bottom:2rem;transform:translate(-50%,20px);background:var(--ink);color:var(--paper);font:500 .85rem 'DM Sans',sans-serif;padding:.8rem 1.4rem;opacity:0;pointer-events:none;transition:opacity .3s,transform .3s;z-index:3000;max-width:90vw;text-align:center}
+#toast.show{opacity:1;transform:translate(-50%,0)}
+#dots{display:flex;gap:.45rem;justify-content:center;align-items:center;margin-top:.4rem}
+#dots i{width:9px;height:9px;border-radius:50%;border:1.5px solid var(--muted);display:inline-block;transition:background .3s,border-color .3s,transform .3s}
+#dots i.on{background:var(--accent1);border-color:var(--accent1);transform:scale(1.15)}
+#dots i.egg{border-style:dashed}
+#dots i.egg.on{background:var(--accent3);border-color:var(--accent3)}
+.dots-label{font-size:.65rem;letter-spacing:.12em;text-transform:uppercase;color:var(--muted);margin-top:.6rem}
+
+/* night mode page colors */
+body.night{--paper:#171512;--ink:#f2ede4;--muted:#8f8a82}
+body.night header{border-bottom-color:rgba(245,240,232,.12)}
+body.night .home p,body.night .activity-content p,body.night .profile-list li,body.night .task-item,body.night .internship-company,body.night .hero-desc{color:rgba(245,240,232,.72)}
+body.night .quote-block blockquote{color:var(--paper)}
+body.night .quote-block,body.night .activity{border-color:rgba(245,240,232,.15)}
+body.night .internship-section{background:#1d1b17}
+body.night .internship-card{border-color:rgba(245,240,232,.15)}
+body.night .tag-green{color:#7fc87f;background:transparent}
+body.night .tag-blue{color:#8faaff;background:transparent}
+body.night .tag-orange{color:#ff7a55;background:transparent}
+body.night .lang-bar{background:rgba(245,240,232,.12)}
+body.night .activity-number{-webkit-text-stroke-color:var(--ink)}
+body.night .pill{border-color:rgba(245,240,232,.3)}
+body.night .pill:hover,body.night .pill.on{background:var(--paper);color:var(--ink)}
+body.night .avail-banner{background:var(--paper);color:var(--ink)}
+
+@media (prefers-reduced-motion:reduce){*{transition:none!important;animation:none!important}}
+@media (max-width:768px){header{padding:1rem}.home{padding:1rem}}
 </style>
 </head>
 <body>
 
-<div id="cursor"></div>
+<div id="gate" role="dialog" aria-label="Language">
+  <h1>Bienvenue · Welcome · 欢迎</h1>
+  <div class="opts">
+    <button data-l="fr" lang="fr">Français</button>
+    <button data-l="en" lang="en">English</button>
+    <button data-l="zh" lang="zh">中文</button>
+  </div>
+</div>
 
-<!-- HEADER -->
 <header>
-  <div class="logo">SHANG Xiuchang &nbsp;·&nbsp; 2025–2026</div>
-  <nav>
-    <a href="#eco">Eco-Mode</a>
-    <a href="#code">Bookshelf</a>
-    <a href="#ia">IA & Travail</a>
-  </nav>
+  <button class="logo" onclick="go('home')">SHANG Xiuchang</button>
+  <div class="hbar">
+    <button class="pill" id="back" onclick="go('home')" data-t="back">← La pièce</button>
+    <button class="pill hot" onclick="go('cv')" data-t="quick">Version rapide</button>
+    <span id="langs"><button class="pill" data-l="fr">FR</button> <button class="pill" data-l="en">EN</button> <button class="pill" data-l="zh">中</button></span>
+  </div>
 </header>
 
-<!-- HERO -->
-<section class="hero">
-  <div class="hero-bg-text">PORT<br>FOLIO</div>
-  <div class="hero-tag">Année universitaire 2025–2026</div>
-  <h1>Trois <em>activités,</em><br>une trajectoire.</h1>
-  <div class="hero-sub">
-    <p class="hero-desc">
-      <strong>SHANG Xiuchang</strong> — Étudiante en BUT GEA, parcours CG2P,<br>
-      IUT de Sceaux · Université Paris-Saclay.<br><br>
-      Cette année, j'ai organisé, construit et analysé — 
-      trois façons différentes d'apprendre en faisant.
-    </p>
-    <div class="hero-scroll">Défiler</div>
-  </div>
-</section>
+<main>
+<div class="view" data-v="home"><div class="home">
+  <h1 data-t="home_title">Bienvenue chez moi.<br>Touchez à tout.</h1>
+  <p data-t="home_sub"><strong>SHANG Xiuchang</strong> — étudiante en BUT GEA, parcours CG2P · Université Paris-Saclay.</p>
+  <div class="room-wrap">
+  <svg class="room" viewBox="0 0 800 460" xmlns="http://www.w3.org/2000/svg" role="group" aria-label="Room">
+    <!-- BACK LAYER : wall, window, poster -->
+    <g id="LB">
+      <rect id="wall" width="800" height="320" fill="#efe6d3"/>
+      <!-- window (secret : day / night) -->
+      <g class="obj" id="winObj" tabindex="0" role="button" onclick="toggleNight()" onkeydown="if(event.key=='Enter')toggleNight()">
+        <rect id="sky" x="528" y="48" width="184" height="154" fill="#bcd3ff"/>
+        <g id="stars" fill="#f5f0e8"><circle cx="560" cy="70" r="1.6"/><circle cx="600" cy="95" r="1.3"/><circle cx="645" cy="65" r="1.6"/><circle cx="680" cy="130" r="1.3"/><circle cx="575" cy="140" r="1.4"/><circle cx="660" cy="170" r="1.2"/></g>
+        <g class="clouds" fill="#ffffff" opacity=".9"><ellipse cx="575" cy="95" rx="26" ry="9"/><ellipse cx="595" cy="90" rx="18" ry="8"/><ellipse cx="655" cy="150" rx="30" ry="10"/></g>
+        <circle id="sun" cx="680" cy="82" r="14" fill="#ffd23f"/>
+        <circle id="moon" cx="680" cy="82" r="12" fill="#f5f0e8"/>
+        <rect x="520" y="40" width="200" height="170" fill="none" stroke="#0f0e0c" stroke-width="6"/>
+        <path d="M620 40v170M520 125h200" stroke="#0f0e0c" stroke-width="4"/>
+        <rect x="512" y="210" width="216" height="10" fill="#0f0e0c" opacity=".15"/>
+        <text class="lab" x="520" y="30" data-t="l_win">Fenêtre</text>
+      </g>
+      <!-- poster : IA & travail -->
+      <g class="obj" tabindex="0" role="link" onclick="zoomTo(this,'ia')" onkeydown="if(event.key=='Enter')zoomTo(this,'ia')">
+        <rect x="330" y="70" width="84" height="106" fill="#c8f000" stroke="#0f0e0c" stroke-width="3"/>
+        <rect x="340" y="82" width="64" height="58" fill="#ff4d1c"/>
+        <text x="372" y="118" text-anchor="middle" font-family="Syne,sans-serif" font-weight="800" font-size="20" fill="#f5f0e8">IA ?</text>
+        <path d="M342 152h60M342 162h44" stroke="#0f0e0c" stroke-width="3"/>
+        <rect x="362" y="62" width="22" height="12" fill="#ffffff" opacity=".65"/>
+        <text class="lab" x="328" y="56" data-t="l_ia">IA &amp; Travail</text>
+      </g>
+    </g>
 
-<!-- PROFILE SECTION -->
+    <!-- MID LAYER : floor, furniture -->
+    <g id="LM">
+      <rect id="floor" y="320" width="800" height="140" fill="#d8c9ab"/>
+      <rect y="316" width="800" height="8" fill="#0f0e0c" opacity=".12"/>
+      <ellipse id="rug" cx="430" cy="418" rx="290" ry="24" fill="#ff4d1c" opacity=".16"/>
+
+      <!-- bookshelf : Bookshelf project -->
+      <g class="obj" tabindex="0" role="link" onclick="zoomTo(this,'code')" onkeydown="if(event.key=='Enter')zoomTo(this,'code')">
+        <rect x="45" y="120" width="180" height="200" fill="#8a5a3c" stroke="#0f0e0c" stroke-width="4"/>
+        <rect x="56" y="132" width="158" height="84" fill="#5d3d28"/>
+        <rect x="56" y="228" width="158" height="80" fill="#5d3d28"/>
+        <g>
+          <rect class="book" x="62" y="160" width="14" height="56" fill="#ff4d1c"/><rect class="book" x="79" y="168" width="12" height="48" fill="#0047ff"/><rect class="book" x="94" y="156" width="15" height="60" fill="#c8f000"/><rect class="book" x="112" y="164" width="13" height="52" fill="#0f0e0c"/><rect class="book" x="128" y="158" width="15" height="58" fill="#ff4d1c"/><rect class="book" x="146" y="168" width="12" height="48" fill="#0047ff"/><rect class="book" x="161" y="154" width="15" height="62" fill="#c8f000"/><rect class="book" x="179" y="162" width="13" height="54" fill="#f6c6d6"/><rect class="book" x="195" y="158" width="14" height="58" fill="#0f0e0c"/>
+        </g>
+        <g>
+          <rect class="book" x="62" y="296" width="70" height="12" fill="#ff4d1c"/><rect class="book" x="66" y="284" width="62" height="12" fill="#0047ff"/><rect class="book" x="70" y="272" width="56" height="12" fill="#c8f000"/><rect class="book" x="138" y="254" width="12" height="54" fill="#f6c6d6" transform="rotate(8 144 308)"/><ellipse cx="186" cy="298" rx="18" ry="8" fill="#0f0e0c" opacity=".2"/>
+        </g>
+        <text class="lab" x="45" y="108" data-t="l_code">Bookshelf</text>
+      </g>
+
+      <!-- coat rack + tote bag : Eco-Mode -->
+      <g class="obj" tabindex="0" role="link" onclick="zoomTo(this,'eco')" onkeydown="if(event.key=='Enter')zoomTo(this,'eco')">
+        <path d="M302 206v112" stroke="#0f0e0c" stroke-width="5"/>
+        <circle cx="302" cy="200" r="5" fill="#0f0e0c"/>
+        <path d="M280 320q22-8 44 0" fill="none" stroke="#0f0e0c" stroke-width="5"/>
+        <path d="M280 246q22-26 44 0" fill="none" stroke="#0f0e0c" stroke-width="5"/>
+        <rect x="268" y="244" width="68" height="78" rx="5" fill="#3f66b8"/>
+        <path d="M276 268h52M276 296h52" stroke="#ffffff" stroke-width="2.5" stroke-dasharray="5 4" opacity=".65"/>
+        <path d="M292 276l10-8 10 8-10 8z" fill="none" stroke="#c8f000" stroke-width="2.5"/>
+        <text class="lab" x="252" y="230" data-t="l_eco">Eco-Mode</text>
+      </g>
+
+      <!-- standing lamp (secret) -->
+      <g class="obj" tabindex="0" role="button" onclick="toggleLamp(this)" onkeydown="if(event.key=='Enter')toggleLamp(this)">
+        <ellipse class="glow" cx="782" cy="258" rx="52" ry="42" fill="#c8f000" opacity=".2"/>
+        <path d="M782 258v62" stroke="#0f0e0c" stroke-width="4"/>
+        <path d="M766 320h32" stroke="#0f0e0c" stroke-width="5"/>
+        <path d="M756 258h52l-9-30h-34z" fill="#c8f000" stroke="#0f0e0c" stroke-width="3"/>
+        <text class="lab" x="748" y="214" data-t="l_lamp">Lampe</text>
+      </g>
+
+      <!-- desk -->
+      <rect x="350" y="296" width="400" height="16" fill="#8a5a3c"/>
+      <rect x="365" y="312" width="14" height="108" fill="#6b4a32"/>
+      <rect x="721" y="312" width="14" height="108" fill="#6b4a32"/>
+
+      <!-- laptop : experience -->
+      <g class="obj" tabindex="0" role="link" onclick="zoomTo(this,'work')" onkeydown="if(event.key=='Enter')zoomTo(this,'work')">
+        <rect x="430" y="206" width="130" height="84" fill="#0f0e0c"/>
+        <rect x="440" y="216" width="110" height="64" fill="#1d3a8a"/>
+        <path d="M448 232h56M448 246h78M448 258h40" stroke="#c8f000" stroke-width="5"/>
+        <rect class="blink" x="524" y="228" width="7" height="12" fill="#c8f000"/>
+        <path d="M410 290h170l-12 14H422z" fill="#9e9a93"/>
+        <text class="lab" x="430" y="194" data-t="l_work">Expérience</text>
+      </g>
+
+      <!-- coffee -->
+      <g>
+        <path class="steam" d="M610 256q4-8 0-14" fill="none" stroke="#0f0e0c" stroke-width="2.5" opacity=".4" stroke-linecap="round"/>
+        <path class="steam s2" d="M622 258q-4-9 0-16" fill="none" stroke="#0f0e0c" stroke-width="2.5" opacity=".4" stroke-linecap="round"/>
+        <rect x="600" y="262" width="28" height="28" rx="3" fill="#f5f0e8" stroke="#0f0e0c" stroke-width="2.5"/>
+        <path d="M628 268q13 3 0 16" fill="none" stroke="#0f0e0c" stroke-width="2.5"/>
+      </g>
+
+      <!-- desk plant : profil -->
+      <g class="obj" tabindex="0" role="link" onclick="zoomTo(this,'about')" onkeydown="if(event.key=='Enter')zoomTo(this,'about')">
+        <path d="M686 254q-10-58 18-96" fill="none" stroke="#2d7a2d" stroke-width="5"/>
+        <path d="M686 254q16-44 46-66" fill="none" stroke="#2d7a2d" stroke-width="5"/>
+        <path d="M686 254q-20-38-38-50" fill="none" stroke="#2d7a2d" stroke-width="5"/>
+        <circle cx="704" cy="150" r="11" fill="#f6c6d6"/><circle cx="732" cy="182" r="10" fill="#f6c6d6"/><circle cx="648" cy="198" r="10" fill="#f6c6d6"/>
+        <circle cx="704" cy="150" r="4.5" fill="#ff4d1c"/><circle cx="732" cy="182" r="4" fill="#ff4d1c"/><circle cx="648" cy="198" r="4" fill="#ff4d1c"/>
+        <rect x="656" y="244" width="60" height="10" rx="2" fill="#ff4d1c"/>
+        <path d="M662 254h48l-7 38h-34z" fill="#ff4d1c"/>
+        <text class="lab" x="636" y="120" data-t="l_about">Profil</text>
+      </g>
+
+      <!-- shadows -->
+      <ellipse cx="135" cy="324" rx="105" ry="9" fill="#0f0e0c" opacity=".08"/>
+      <ellipse cx="550" cy="324" rx="200" ry="9" fill="#0f0e0c" opacity=".08"/>
+    </g>
+
+    <!-- FRONT LAYER : the dog (secret) -->
+    <g id="LF">
+      <g class="obj" id="catObj" tabindex="0" role="button" onclick="catClick(this)" onkeydown="if(event.key=='Enter')catClick(this)">
+        <path class="tail" d="M196 400q22-4 18-30" fill="none" stroke="#b5824f" stroke-width="10" stroke-linecap="round"/>
+        <ellipse cx="158" cy="400" rx="40" ry="27" fill="#b5824f"/>
+        <rect x="140" y="414" width="11" height="14" rx="5" fill="#a8763f"/>
+        <rect x="158" y="414" width="11" height="14" rx="5" fill="#a8763f"/>
+        <circle cx="120" cy="372" r="20" fill="#b5824f"/>
+        <ellipse cx="104" cy="378" rx="7" ry="14" fill="#8a5f38" transform="rotate(18 104 378)"/>
+        <ellipse cx="136" cy="378" rx="7" ry="14" fill="#8a5f38" transform="rotate(-18 136 378)"/>
+        <circle cx="112" cy="382" r="9" fill="#d9b98c"/>
+        <circle cx="108" cy="379" r="3" fill="#0f0e0c"/>
+        <circle cx="114" cy="366" r="2.6" fill="#0f0e0c"/><circle cx="128" cy="366" r="2.6" fill="#0f0e0c"/>
+        <path d="M110 390q3 7 7 5" fill="none" stroke="#e2606b" stroke-width="3.5" stroke-linecap="round"/>
+        <path d="M104 394q16 10 32 2" fill="none" stroke="#ff4d1c" stroke-width="4.5"/>
+        <circle cx="120" cy="399" r="3.5" fill="#c8f000"/>
+        <ellipse cx="158" cy="428" rx="48" ry="6" fill="#0f0e0c" opacity=".1"/>
+        <text class="lab" x="92" y="336" data-t="l_cat">Chien</text>
+      </g>
+    </g>
+  </svg>
+  </div>
+  <p data-t="hint">Clique sur un objet de la pièce — certains cachent des secrets…</p>
+  <div id="dots" aria-hidden="true"></div>
+  <p class="dots-label" data-t="dots_label">Ta progression dans la pièce</p>
+</div></div>
+
+<div class="view" data-v="about"><!-- PROFILE SECTION -->
 <section class="profile-section">
   <div class="profile-grid">
 
@@ -718,75 +1009,127 @@
       <div class="profile-name-block">
         <h2 class="profile-name">SHANG<br><em>Xiuchang</em></h2>
         <div class="profile-contact">
-          <span>📍 Sceaux, Paris 92330</span>
-          <span>✉️ xiuchang.shang@universite-paris-saclay.fr</span>
+          <span>📍 Sceaux · Paris 92330</span>
+          <span>✉️ <a href="mailto:xiuchang.shang@universite-paris-saclay.fr">xiuchang.shang@universite-paris-saclay.fr</a></span>
+          <span>✉️ <a href="mailto:shangxiuchang@126.com">shangxiuchang@126.com</a></span>
+          <span>📱 +33 7 75 73 46 66 · +86 135 5234 8846</span>
+          <span>🔗 <a href="https://xiuchangshang-cyber.github.io/mon-site-xiuchang/" target="_blank" rel="noopener">github · mon-site-xiuchang</a></span>
         </div>
       </div>
+      <a class="cv-btn" href="CV_Xiuchang_Shang_EN.pdf" download data-t="cv_btn">Télécharger mon CV ↓</a>
     </div>
 
     <div class="profile-right">
       <div class="profile-block">
-        <div class="profile-block-label">Formation</div>
+        <p data-t="a_intro">Bonjour ! Je suis <strong>商脩畅 (Shang Xiuchang)</strong>. Étudiante en gestion à l'Université Paris-Saclay, stagiaire dans des fonds d'investissement à Pékin. Un jour, un flowchart de montage de fonds bancal m'a appris quelque chose : ce qui ressemble à de l'ambiguïté dans une organisation, c'est souvent une structure qui n'a pas encore été écrite. J'aime écrire ces structures — dans un modèle Excel, un processus, un site web. Mon objectif : devenir cheffe de produit, la passerelle entre ceux qui définissent le besoin et ceux qui construisent.</p>
+      </div>
+
+      <div class="profile-block">
+        <div class="profile-block-label" data-t="f_label">Formation</div>
         <div class="profile-block-title">BUT GEA — Parcours CG2P</div>
-        <div class="profile-block-sub">IUT de Sceaux · Université Paris-Saclay</div>
+        <div class="profile-block-sub" data-t="f_sub">Université Paris-Saclay (QS #71, ARWU #12) · 2024 – 2027</div>
         <ul class="profile-list">
-          <li>Comptabilité financière & de gestion</li>
-          <li>Fiscalité · Droit des affaires · Économie (micro & macro)</li>
+          <li data-t="li1">Comptabilité financière &amp; de gestion · Contrôle de gestion</li>
+          <li data-t="li2">Fiscalité · Droit civil &amp; commercial · Économie (micro &amp; macro)</li>
+          <li data-t="hon1"><strong>1<sup>re</sup> de ma promotion</strong> en Gestion des opérations</li>
+          <li data-t="hon2"><strong>20/20</strong> en Mathématiques et en Traitement de l'information (Excel, Power Pivot, Power BI)</li>
+          <li data-t="hon3">Analyse et visualisation de données · SQL (en cours)</li>
         </ul>
       </div>
 
       <div class="profile-block">
-        <div class="profile-block-label">Compétences numériques</div>
+        <div class="profile-block-label" data-t="lang_label">Langues</div>
+        <div class="lang-row"><span class="lang-name" data-t="lz">Chinois<small data-t="lzl">langue maternelle</small></span><span class="lang-bar"><i style="width:100%"></i></span></div>
+        <div class="lang-row"><span class="lang-name" data-t="lf">Français<small data-t="lfl">C1 — certificat d'admission linguistique</small></span><span class="lang-bar"><i style="width:85%"></i></span></div>
+        <div class="lang-row"><span class="lang-name" data-t="le">Anglais<small data-t="lel">IELTS 7.0 — Listening 8.0 · Reading 8.0</small></span><span class="lang-bar"><i style="width:78%"></i></span></div>
+        <div class="lang-row"><span class="lang-name" data-t="lk">Coréen<small data-t="lkl">conversationnel</small></span><span class="lang-bar"><i style="width:40%"></i></span></div>
+      </div>
+
+      <div class="profile-block">
+        <div class="profile-block-label" data-t="s_label">Compétences</div>
+        <div class="skill-group-label" data-t="sk_data">Data &amp; analyse</div>
         <div class="skills-tags">
-          <span class="skill-tag">Excel (VLOOKUP, Power Pivot)</span>
-          <span class="skill-tag">Power BI</span>
-          <span class="skill-tag">Sage 100</span>
-          <span class="skill-tag">Trello</span>
-          <span class="skill-tag">Asana</span>
-          <span class="skill-tag">Flutter</span>
-          <span class="skill-tag">GitHub</span>
-          <span class="skill-tag">VS Code</span>
+          <span class="skill-tag">Excel</span><span class="skill-tag">Power Query</span><span class="skill-tag">Power Pivot</span><span class="skill-tag">Power BI</span><span class="skill-tag">SQL</span>
         </div>
+        <div class="skill-group-label" data-t="sk_fin">Logiciels financiers</div>
+        <div class="skills-tags">
+          <span class="skill-tag">Sage 100</span><span class="skill-tag">Yonyou (UFIDA)</span>
+        </div>
+        <div class="skill-group-label" data-t="sk_dev">Développement</div>
+        <div class="skills-tags">
+          <span class="skill-tag">VS Code</span><span class="skill-tag">GitHub</span><span class="skill-tag">HTML/CSS</span><span class="skill-tag">Flutter</span>
+        </div>
+        <div class="skill-group-label" data-t="sk_des">Design &amp; présentation</div>
+        <div class="skills-tags">
+          <span class="skill-tag" data-t="sk_d1">Pitch decks Private Equity</span><span class="skill-tag" data-t="sk_d2">Dossiers de projet</span><span class="skill-tag" data-t="sk_d3">Affiches &amp; montage vidéo</span>
+        </div>
+      </div>
+
+      <div class="profile-block">
+        <div class="profile-block-label" data-t="cam_label">Vie étudiante</div>
+        <ul class="profile-list">
+          <li data-t="cam1"><strong>Organisation étudiante — planning &amp; organisation (2025–2026, Paris)</strong> : conçu et vendu du merchandising campus, <strong>+2 000 €</strong> de bénéfice pour le département ; sélection produit, pricing et gestion des stocks en autonomie.</li>
+          <li data-t="cam2">Partenariat avec l'association <strong>Emmaüs Défi</strong> : trois événements à thème coordonnés de bout en bout — lieu, promotion, bénévoles.</li>
+        </ul>
+      </div>
+
+      <div class="profile-block">
+        <div class="profile-block-label" data-t="fun_label">En dehors des chiffres</div>
+        <ul class="profile-list">
+          <li data-t="fun1">📖 Grande lectrice — d'où Bookshelf, ma bibliothèque en ligne</li>
+          <li data-t="fun2">♻️ Mode durable &amp; seconde main — d'où Eco-Mode</li>
+          <li data-t="fun3">🎨 Design d'affiches, montage vidéo — et peinture</li>
+          <li data-t="fun4">🐕 Plutôt chien que chat (il y a un chien caché quelque part dans la pièce…)</li>
+        </ul>
       </div>
     </div>
 
   </div>
 </section>
 
-<!-- INTERNSHIP SECTION -->
+</div>
+<div class="view" data-v="work"><!-- INTERNSHIP SECTION -->
 <section class="internship-section">
   <div class="internship-inner">
     <div class="internship-label">
-      <span class="section-label" style="margin-bottom:0">Expérience professionnelle</span>
+      <span class="section-label" style="margin-bottom:0" data-t="exp_label">Expérience professionnelle</span>
     </div>
     <div style="display:flex; flex-direction:column; gap:1.5rem;">
+
+      <div class="avail-banner" data-t="avail">🎓 Diplômée en juin 2027 · <b>disponible dès mars 2027</b> · mobilité internationale acceptée</div>
 
       <div class="internship-card">
         <div class="internship-header">
           <div>
-            <div class="internship-title">Stagiaire — Finance & Gestion administrative des fonds</div>
-            <div class="internship-company">HEYI Capital &nbsp;·&nbsp; Société de gestion de fonds de Private Equity</div>
-            <div class="internship-location">Pékin, Chine &nbsp;·&nbsp; 2025/2026</div>
+            <div class="internship-title" data-t="i1t">Stagiaire — Middle &amp; Back Office, fonds de Private Equity</div>
+            <div class="internship-company" data-t="co1">HEYI Capital · Beijing Kaituoyi Private Equity Fund Management &nbsp;·&nbsp; 1 Md+ RMB sous gestion, 12 fonds</div>
+            <div class="internship-location" data-t="loc1">Pékin, Chine (à distance) &nbsp;·&nbsp; depuis juin 2026</div>
           </div>
-          <div class="internship-badge">Stage en cours</div>
+          <div class="internship-badge" data-t="badge">Stage</div>
         </div>
         <div class="internship-tasks">
           <div class="task-item">
             <div class="task-dot" style="background:var(--accent1)"></div>
-            <div>
-              <strong>Administration de fonds</strong> — Participation à la constitution de fonds, reporting trimestriel et annuel sur plusieurs fonds.
+            <div data-t="t1">
+              <strong>Cycle de vie des fonds</strong> — Participation à la chaîne complète : immatriculation, ouverture des comptes bancaires dédiés, enregistrement réglementaire dans le système AMBERS.
             </div>
           </div>
           <div class="task-item">
             <div class="task-dot" style="background:var(--accent2)"></div>
-            <div>
-              <strong>Comptabilité & Fiscalité</strong> — Déclarations fiscales, tenue de comptabilité sur le logiciel Yonyou.
+            <div data-t="t2">
+              <strong>Reporting &amp; fiscalité</strong> — Déclarations réglementaires AMAC et fiscales pour <strong>10 fonds</strong> et la société de gestion ; comptabilité courante sur Yonyou (UFIDA).
             </div>
           </div>
           <div class="task-item">
             <div class="task-dot" style="background:#2d7a2d"></div>
-            <div>
-              <strong>Missions juridiques en autonomie</strong> — Plateforme d'actionnariat salarié et dossier de cession de parts.
+            <div data-t="t3">
+              <strong>Missions juridiques en autonomie</strong> — Montage d'un véhicule d'actionnariat salarié (société en commandite simple) et dossiers administratifs de cessions de parts.
+            </div>
+          </div>
+          <div class="task-item">
+            <div class="task-dot" style="background:var(--accent3)"></div>
+            <div data-t="t3b">
+              <strong>Process &amp; relations externes</strong> — Refonte du circuit de validation des notes de frais sur Trip.Biz avec l'équipe technique de Trip.com (<strong>délai ramené à moins d'un jour</strong>) ; interface avec investisseurs, administrations, banques et services fiscaux locaux.
             </div>
           </div>
         </div>
@@ -795,29 +1138,60 @@
       <div class="internship-card">
         <div class="internship-header">
           <div>
-            <div class="internship-title">Stagiaire — Analyse financière & RH</div>
-            <div class="internship-company">Youku · Groupe Alibaba &nbsp;·&nbsp; Agence de marketing digital</div>
-            <div class="internship-location">Pékin, Chine &nbsp;·&nbsp; Avril – Juin 2025</div>
+            <div class="internship-title" data-t="i3t">Stagiaire — Gestion de comptes, front office</div>
+            <div class="internship-company" data-t="co3">East Money (东方财富) &nbsp;·&nbsp; Direction commerciale de Pékin</div>
+            <div class="internship-location" data-t="loc3">Pékin, Chine &nbsp;·&nbsp; avril – mai 2026</div>
           </div>
-          <div class="internship-badge">Stage</div>
+          <div class="internship-badge" data-t="badge">Stage</div>
         </div>
         <div class="internship-tasks">
           <div class="task-item">
             <div class="task-dot" style="background:var(--accent1)"></div>
-            <div>
-              <strong>Analyse financière</strong> — Réalisation autonome de l'analyse et de la visualisation des données (Excel, PPT) : rentabilité, coûts fixes/variables, ROI.
+            <div data-t="t7">
+              <strong>Ouverture et modification de comptes</strong> — Procédures du marché secondaire, double enregistrement (双录) et information anti-blanchiment.
             </div>
           </div>
           <div class="task-item">
             <div class="task-dot" style="background:var(--accent2)"></div>
-            <div>
-              <strong>Reporting & Comptabilité</strong> — Préparation indépendante de la déclaration financière annuelle : classification des dépenses, contrôle des justificatifs, détection d'anomalies.
+            <div data-t="t8">
+              <strong>Organisation client</strong> — Anticipation des dossiers et rendez-vous : <strong>nombre quotidien de clients servis doublé</strong>, plus de 20 clients accompagnés, zéro réclamation.
             </div>
           </div>
           <div class="task-item">
             <div class="task-dot" style="background:#2d7a2d"></div>
-            <div>
-              <strong>RH & Recrutement</strong> — Participation au processus complet pour des postes financiers et marketing : tri des CV, échanges candidats, conduite d'entretiens.
+            <div data-t="t9">
+              <strong>Pédagogie</strong> — Face à des clients pressés ou dubitatifs, explication claire des exigences réglementaires et des procédures.
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="internship-card">
+        <div class="internship-header">
+          <div>
+            <div class="internship-title" data-t="i2t">Stagiaire — Assistante du directeur fonctionnel : finance, fiscalité &amp; RH</div>
+            <div class="internship-company" data-t="co2">Feibenjun FBB &nbsp;·&nbsp; Agence de marketing new media pour Youku · Alibaba</div>
+            <div class="internship-location" data-t="loc2">Pékin, Chine &nbsp;·&nbsp; avril – juillet 2025</div>
+          </div>
+          <div class="internship-badge" data-t="badge">Stage</div>
+        </div>
+        <div class="internship-tasks">
+          <div class="task-item">
+            <div class="task-dot" style="background:var(--accent1)"></div>
+            <div data-t="t4">
+              <strong>Analyse financière</strong> — Traitement de <strong>≈ 700 notes de frais</strong> sous Excel pour un audit fiscal interne ; production autonome de <strong>3 rapports financiers</strong> (revenus, bénéfices, dépenses).
+            </div>
+          </div>
+          <div class="task-item">
+            <div class="task-dot" style="background:var(--accent2)"></div>
+            <div data-t="t6">
+              <strong>RH &amp; recrutement</strong> — Présélection de 8 candidats pour un poste de responsable financier et organisation des entretiens ; accompagnement complet d'un recrutement marketing (promotion de séries), jusqu'à la signature d'un CDI.
+            </div>
+          </div>
+          <div class="task-item">
+            <div class="task-dot" style="background:#2d7a2d"></div>
+            <div data-t="t5">
+              <strong>Intelligence de marché</strong> — Sur la base de l'expérience acquise, support d'information sur l'écosystème des plateformes sociales en Chine (Douyin, Weibo) et la monétisation de contenus.
             </div>
           </div>
         </div>
@@ -827,59 +1201,46 @@
   </div>
 </section>
 
-<!-- INTRO BAND -->
-<div class="intro-band">
-  <h2>Ce que cette année<br>m'a <span>appris.</span></h2>
-  <p class="intro-text">
-    Trois activités en apparence très différentes — un projet associatif, une application codée de zéro, une analyse critique de l'IA — mais reliées par un même fil : 
-    la conviction que apprendre vraiment, c'est toujours prendre un risque, proposer quelque chose, et assumer le résultat.
-  </p>
 </div>
-
-<!-- ACTIVITIES -->
-<section class="activities">
-  <div class="section-label">Activités sélectionnées</div>
-
-  <!-- ACTIVITY 1: ECO-MODE -->
-  <div class="activity" id="eco">
+<div class="view" data-v="eco"><section class="activities"><div class="activity" id="eco">
     <div class="activity-meta">
       <div class="activity-number">01</div>
       <span class="activity-tag tag-green">Projet tutoré</span>
     </div>
     <div class="activity-content">
       <h3>Eco-Mode</h3>
-      <p class="subtitle">Faire circuler plutôt que consommer</p>
+      <p class="subtitle" data-t="sub1">Faire circuler plutôt que consommer</p><p class="tr-only" data-t="sum1"></p>
 
-      <div class="quote-block">
+      <div class="quote-block fr-only">
         <blockquote>« Ce monde regorge déjà de richesses matérielles. Ce dont nous avons besoin, ce n'est pas d'acheter davantage, mais de faire circuler ce qui existe déjà. »</blockquote>
       </div>
 
-      <p>
+      <p class="fr-only">
         Dans le cadre du projet tutoré, j'ai rejoint un groupe de trois étudiants pour co-construire <strong>Eco-Mode</strong>, un projet centré sur la mode durable et la consommation responsable.
       </p>
-      <p>
+      <p class="fr-only">
         L'idée de l'échange de vêtements entre étudiants vient de moi. J'ai également conçu les affiches pour les événements organisés cette année.
       </p>
-      <p>
+      <p class="fr-only">
         Le troisième événement, deux <strong>ateliers de upcycling</strong>, a été notre plus grande réussite. Nous avons récupéré des jeans auprès d'Emmaüs en amont, puis organisé deux séances où les participants transformaient ces jeans en sacs. J'ai pris en charge l'<strong>enseignement</strong> pendant les ateliers, ainsi que le tournage de la <strong>vidéo de promotion</strong> de l'événement.
       </p>
 
       <div class="stat-row">
         <div class="stat">
           <span class="stat-num">~10</span>
-          <span class="stat-label">participants — visite Emmaüs</span>
+          <span class="stat-label" data-t="st1">participants — visite Emmaüs</span>
         </div>
         <div class="stat">
           <span class="stat-num">20+</span>
-          <span class="stat-label">participants — échange de vêtements</span>
+          <span class="stat-label" data-t="st2">participants — échange de vêtements</span>
         </div>
         <div class="stat">
           <span class="stat-num">40+</span>
-          <span class="stat-label">participants — ateliers upcycling</span>
+          <span class="stat-label" data-t="st3">participants — ateliers upcycling</span>
         </div>
         <div class="stat">
           <span class="stat-num">25</span>
-          <span class="stat-label">sacs en jean réalisés</span>
+          <span class="stat-label" data-t="st4">sacs en jean réalisés</span>
         </div>
       </div>
 
@@ -887,120 +1248,285 @@
         <img src="images/ecomode.jpg" alt="Aperçu du projet Eco-Mode" onerror="this.parentElement.style.display='none'">
       </div>
 
-      <div class="highlight-box green">
+      <div class="highlight-box green" data-t="hl1">
         <strong>Ce que j'ai retenu :</strong> au-delà de la satisfaction de donner une seconde vie à ces vêtements, 
         ce qui m'a le plus marquée, c'est de voir chaque participante repartir fière de son sac, fait par elle-même.
       </div>
     </div>
   </div>
 
-  <!-- ACTIVITY 2: BOOKSHELF -->
-  <div class="activity" id="code">
+  </section></div>
+<div class="view" data-v="code"><section class="activities"><div class="activity" id="code">
     <div class="activity-meta">
       <div class="activity-number">02</div>
       <span class="activity-tag tag-blue">Apprentissage autonome</span>
     </div>
     <div class="activity-content">
       <h3>Bookshelf</h3>
-      <p class="subtitle">Construire l'outil qui me manquait</p>
+      <p class="subtitle" data-t="sub2">Construire l'outil qui me manquait</p><p class="tr-only" data-t="sum2"></p>
 
-      <p>
+      <p class="fr-only">
         Je lis de plusieurs façons — livres numériques, papier, emprunts — et je n'avais aucun endroit pour centraliser tout ça. J'ai donc décidé de créer <strong>Bookshelf</strong> : une bibliothèque personnelle en ligne, où je peux rechercher un livre, récupérer automatiquement sa couverture via l'API <strong>Open Library</strong>, et l'ajouter à mon étagère virtuelle.
       </p>
-      <p>
+      <p class="fr-only">
         Le projet a été entièrement développé sur <strong>GitHub</strong>, directement dans l'éditeur en ligne. La fonctionnalité qui m'a demandé le plus de travail : le <strong>stockage local</strong>. Ma bibliothèque devait persister d'une session à l'autre. J'ai consulté l'IA pour comprendre comment implémenter cette fonctionnalité — mais c'est moi qui ai modifié le code directement, après avoir compris la logique.
       </p>
-      <p>
+      <p class="fr-only">
         Le site est aujourd'hui fonctionnel et je l'utilise au quotidien. Des améliorations restent à venir — notamment une fonctionnalité de <strong>critiques de livres</strong>. Une limite existe : les livres absents d'Open Library, souvent des éditions en chinois, ne peuvent pas être ajoutés.
       </p>
+
+      <a class="cv-btn" href="https://xiuchangshang-cyber.github.io/bookshelf/" target="_blank" rel="noopener" data-t="bk_link">Visiter Bookshelf ↗</a>
 
       <div class="activity-image">
         <img src="images/bookshelf.jpg" alt="Aperçu du site Bookshelf" onerror="this.parentElement.style.display='none'">
       </div>
 
-      <div class="highlight-box blue">
+      <div class="highlight-box blue" data-t="hl2">
         <strong>Ce que j'ai retenu :</strong> utiliser l'IA comme point de départ, puis modifier le code soi-même, c'est très différent de simplement copier-coller une réponse. Comprendre ce qu'on change — et pourquoi — c'est là que l'apprentissage se passe vraiment.
       </div>
     </div>
   </div>
 
-  <!-- ACTIVITY 3: AI PRESENTATION -->
-  <div class="activity" id="ia">
+  </section></div>
+<div class="view" data-v="ia"><section class="activities"><div class="activity" id="ia">
     <div class="activity-meta">
       <div class="activity-number">03</div>
       <span class="activity-tag tag-orange">Cours d'anglais</span>
     </div>
     <div class="activity-content">
       <h3>L'IA va-t-elle nous remplacer ?</h3>
-      <p class="subtitle">Une analyse critique — à contre-courant</p>
+      <p class="subtitle" data-t="sub3">Une analyse critique — à contre-courant</p><p class="tr-only" data-t="sum3"></p>
 
-      <p>
+      <p class="fr-only">
         En binôme, nous avons réalisé une présentation sur l'impact de l'IA sur l'emploi. À rebours des discours optimistes, nous avons défendu une thèse plus nuancée : l'IA risque d'<strong>accélérer la polarisation économique</strong> et de créer une nouvelle classe de travailleurs sans perspectives de reconversion.
       </p>
-      <p>
+      <p class="fr-only">
         Nos sources : un rapport <strong>McKinsey</strong> sur les compétences à l'ère de l'IA, et des déclarations du PDG d'Anthropic alertant sur l'émergence d'une « underclass » de travailleurs à très bas salaires.
+      </p>
+
+      <p data-t="ia_h"><strong>Et au-delà de la salle de classe…</strong></p>
+      <p data-t="ia_p1">
+        Mon rapport à l'IA a commencé au lycée, en cours de biologie : la pensée est portée par des neurones qui s'allument et s'éteignent — en quoi cela différerait-il de zéros et de uns ? Si assez d'unités mises bout à bout font un esprit, où passe exactement la frontière entre une idée et la prédiction d'un modèle de langage ? Je n'ai pas la réponse, et je ne crois pas que quiconque en ait une définitive. Pour chercher un vocabulaire, j'ai suivi des cours en ligne de philosophie : histoire de la philosophie occidentale (Université Renmin de Chine), philosophie de Kant (HUST).
+      </p>
+      <p class="fr-only" data-t="ia_p2">
+        Une question plus concrète m'occupe : le droit d'auteur. Des tribunaux chinois ont récemment reconnu qu'une image générée par IA pouvait être protégée. Mais je peins, et beaucoup d'illustrateurs que je connais voient les choses autrement : pour eux, une image IA est cousue avec les restes du travail d'artistes humains — une image sans âme. Le monde technique défend l'usage ouvert des données ; la communauté artistique refuse cette logique. Je ne sais pas qui a raison, et il me semble qu'il faudra des gens formés pour en juger avec rigueur et soin.
+      </p>
+      <p data-t="ia_p3">
+        En stage, j'utilise l'IA tous les jours pour travailler plus vite. Mon supérieur voulait lui aussi un assistant IA, mais craignait que conserver les informations de la société dans le cloud n'expose des données sensibles, sans responsable identifiable en cas de fuite. Cette conversation m'est restée : si l'IA doit changer le travail des organisations au lieu de dormir sur une étagère, fuite, contrefaçon et responsabilité devront être affrontés — pas évités.
       </p>
 
       <div class="activity-image">
         <img src="images/ia.jpg" alt="Aperçu de la présentation IA & Travail" onerror="this.parentElement.style.display='none'">
       </div>
 
-      <div class="highlight-box">
+      <div class="highlight-box" data-t="hl3">
         <strong>Ce que j'ai retenu :</strong> je suis moi-même utilisatrice quotidienne de l'IA. 
         Défendre la thèse de ses risques tout en l'utilisant pour apprendre à coder — ce n'est pas une contradiction. 
         C'est, je crois, la posture la plus honnête qu'on puisse adopter face à cette technologie.
       </div>
+
+      <div class="highlight-box blue" data-t="hl4">
+        <strong>Où je veux en venir :</strong> la question qui m'a lancée — une machine peut-elle être une personne ? — peut attendre. La question urgente, c'est celle-ci : qui répond de ce que l'IA produit et des données qu'elle manipule ? C'est vers là que je veux aller.
+      </div>
     </div>
   </div>
 
-</section>
+</section></div>
+</main>
 
-<!-- CLOSING BAND -->
-<div class="closing">
-  <h2>Apprendre en <em>faisant.</em><br>Penser en <em>agissant.</em></h2>
-  <p class="closing-text">
-    Ces trois activités ne sont pas des cases cochées. Ce sont trois façons d'avoir mis mes idées à l'épreuve du réel — 
-    avec les doutes, les erreurs, et les ajustements que cela implique. 
-    C'est ce que cette année m'a appris de plus précieux.
-  </p>
-</div>
+<footer><span>SHANG Xiuchang</span><span>xiuchang.shang@universite-paris-saclay.fr</span><a href="https://xiuchangshang-cyber.github.io/mon-site-xiuchang/" target="_blank" rel="noopener">github.io/mon-site-xiuchang</a></footer>
 
-<!-- FOOTER -->
-<footer>
-  <span>SHANG Xiuchang — Portfolio 2025–2026</span>
-  <span>xiuchang.shang@universite-paris-saclay.fr</span>
-</footer>
+<div id="toast" role="status"></div>
 
 <script>
-  // Custom cursor
-  const cursor = document.getElementById('cursor');
-  document.addEventListener('mousemove', e => {
-    cursor.style.left = e.clientX + 'px';
-    cursor.style.top = e.clientY + 'px';
-  });
-  document.querySelectorAll('a, button').forEach(el => {
-    el.addEventListener('mouseenter', () => {
-      cursor.style.width = '28px';
-      cursor.style.height = '28px';
-      cursor.style.background = '#0047ff';
+const T={en:{
+back:"← Back to the room",quick:"Quick version",home_title:"Welcome in.<br>Touch everything.",
+home_sub:"<strong>SHANG Xiuchang</strong> — BUT GEA student (accounting, finance &amp; management) · Université Paris-Saclay.",
+hint:"Click any object in the room — some hide secrets…",
+dots_label:"Your progress around the room",
+l_code:"Bookshelf",l_eco:"Eco-Mode",l_work:"Experience",l_about:"Profile",l_ia:"AI & Work",l_cat:"Cat",l_win:"Window",l_lamp:"Lamp",
+egg_cat:"Miaou ! You found the cat — the real boss of this room.",
+egg_night:"You found the switch ! Click the window any time to flip day and night.",
+egg_lamp:"Cozy lighting, activated.",
+egg_views:"You have explored every corner of the room. Merci !",
+f_label:"Education",f_sub:"Université Paris-Saclay (QS #71, ARWU #12) · 2024 – 2027",
+li1:"Financial &amp; management accounting · Management control",li2:"Tax · Civil &amp; commercial law · Economics (micro &amp; macro)",
+hon1:"<strong>Ranked 1st</strong> in my class in Operations Management",
+hon2:"<strong>20/20</strong> in Mathematics and in Information Processing (Excel, Power Pivot, Power BI)",
+hon3:"Data analysis &amp; visualization · SQL (coursework)",
+lang_label:"Languages",lz:"Chinese",lzl:"native",lf:"French",lfl:"C1 — linguistic admission certificate",le:"English",lel:"IELTS 7.0 — Listening 8.0 · Reading 8.0",lk:"Korean",lkl:"conversational",
+s_label:"Skills",sk_data:"Data &amp; analytics",sk_fin:"Financial software",sk_dev:"Development",sk_des:"Design &amp; presentation",sk_d1:"Private equity pitch decks",sk_d2:"Project proposals",sk_d3:"Posters &amp; video editing",
+cam_label:"Campus life",
+cam1:"<strong>Student organisation — planner &amp; organiser (2025–2026, Paris)</strong>: designed and sold campus merchandise, <strong>€2,000+</strong> profit for the department; full ownership of product selection, pricing and inventory.",
+cam2:"Partnership with the non-profit <strong>Emmaüs Défi</strong>: three themed events coordinated end to end — venue, promotion, volunteers.",
+fun_label:"Beyond the numbers",fun1:"📖 Avid reader — hence Bookshelf, my online library",fun2:"♻️ Sustainable fashion &amp; second-hand — hence Eco-Mode",fun3:"🎨 Poster design, video editing — and painting",fun4:"🐕 More of a dog person (there is a dog hidden somewhere in the room…)",
+cv_btn:"Download my CV ↓",
+a_intro:"Hello! I am <strong>商脩畅 (Shang Xiuchang)</strong>. Management student at Université Paris-Saclay, intern at investment funds in Beijing. One day, a clumsy fund-setup flowchart taught me something: much of what looks like ambiguity in an organisation is structure that has not yet been written down. I like writing those structures — in an Excel model, a process, a website. My goal: to become a product manager, the bridge between the people who define the need and the people who build.",
+exp_label:"Work experience",
+avail:"🎓 Graduating June 2027 · <b>available from March 2027</b> · open to international relocation",
+i1t:"Intern — Middle &amp; Back Office, Private Equity funds",i2t:"Intern — Assistant to the Functional Director: finance, tax &amp; HR",i3t:"Intern — Account management, front desk",
+co1:"HEYI Capital · Beijing Kaituoyi Private Equity Fund Management &nbsp;·&nbsp; RMB 1bn+ committed, 12 funds",co2:"Feibenjun FBB &nbsp;·&nbsp; New-media marketing agency for Youku · Alibaba",co3:"East Money (东方财富) &nbsp;·&nbsp; Beijing branch office",
+loc1:"Beijing, China (remote) &nbsp;·&nbsp; since June 2026",loc2:"Beijing, China &nbsp;·&nbsp; April – July 2025",loc3:"Beijing, China &nbsp;·&nbsp; April – May 2026",badge:"Internship",
+t1:"<strong>Fund life cycle</strong> — Supported the full chain: business registration, dedicated bank account opening, regulatory filing in the AMBERS system.",
+t2:"<strong>Reporting &amp; tax</strong> — AMAC regulatory reporting and tax filings for <strong>10 funds</strong> and the management company; day-to-day bookkeeping in Yonyou (UFIDA).",
+t3:"<strong>Legal tasks, autonomously</strong> — Set up an employee shareholding vehicle (limited partnership) from scratch; administrative work for equity transfers.",
+t3b:"<strong>Process &amp; external relations</strong> — Redesigned the expense-approval workflow on Trip.Biz with Trip.com's tech team (<strong>turnaround cut to under one day</strong>); liaised with investors, government authorities, banks and local tax bureaus.",
+t7:"<strong>Account opening &amp; changes</strong> — Secondary-market procedures, dual recording (双录) and anti-money-laundering disclosure.",
+t8:"<strong>Client organisation</strong> — Prepared documents and appointments in advance: <strong>average daily clients doubled</strong>, 20+ clients served, zero complaints.",
+t9:"<strong>Pedagogy</strong> — With impatient or puzzled clients, explained regulatory requirements and procedures clearly and patiently.",
+t4:"<strong>Financial analysis</strong> — Processed <strong>≈ 700 reimbursement records</strong> in Excel for an internal tax self-audit; independently produced <strong>3 financial reports</strong> (revenue, profit, expenditure).",
+t6:"<strong>HR &amp; recruiting</strong> — Screened 8 candidates for a finance-manager role and organised interviews; ran the full hiring process for a marketing role (series promotion) through to a signed offer.",
+t5:"<strong>Market intelligence</strong> — Drawing on experience gained, provided information support on China's social-platform ecosystem (Douyin, Weibo) and content monetisation.",
+sub1:"Circulating instead of consuming",sub2:"Building the tool I was missing",sub3:"A critical analysis, against the grain",
+sum1:"In a team of students I co-built Eco-Mode, a sustainable-fashion project. The clothing-swap idea was mine, and I designed the event posters. Our biggest success was two upcycling workshops with jeans collected from Emmaüs: I taught the sessions and filmed the promo video. Participants made 25 denim bags.",
+sum2:"Bookshelf is a personal online library I built because I read in many formats and had nowhere to keep it all. You search a book, its cover is fetched through the Open Library API, and you add it to a virtual shelf that persists between sessions via local storage. Built entirely on GitHub: I used AI to understand the logic, then wrote the changes myself. I use it daily; book reviews are next.",
+sum3:"In a pair, we presented on AI's impact on jobs and argued against the optimistic mainstream: AI may accelerate economic polarization and leave workers with no path to retrain. Sources: a McKinsey report on skills in the AI era, and warnings from Anthropic's CEO about a low-wage underclass.",
+hl1:"<strong>What I took away:</strong> beyond giving clothes a second life, what moved me most was seeing every participant leave proud of a bag she made herself.",
+hl2:"<strong>What I took away:</strong> using AI as a starting point and then editing the code yourself is very different from copy-pasting an answer. Learning happens when you understand what you change and why.",
+hl3:"<strong>What I took away:</strong> I use AI daily, and arguing its risks while using it to learn to code is not a contradiction. I think it is the most honest stance toward this technology.",
+st1:"participants — Emmaüs visit",st2:"participants — clothing swap",st3:"participants — upcycling workshops",st4:"denim bags made"},
+zh:{
+back:"← 回到房间",quick:"快速版",home_title:"欢迎进来。<br>随便翻翻。",
+home_sub:"<strong>SHANG Xiuchang</strong> — BUT GEA（会计、财务与管理）在读 · 巴黎-萨克雷大学。",
+hint:"点一点房间里的东西——有些东西藏着小秘密……",
+dots_label:"你在房间里的探索进度",
+l_code:"Bookshelf",l_eco:"Eco-Mode",l_work:"实习经历",l_about:"关于我",l_ia:"AI 与就业",l_cat:"狗狗",l_win:"窗户",l_lamp:"台灯",
+bk_link:"访问 Bookshelf ↗",
+egg_cat:"汪！你找到狗了——这房间里真正的主宰。",
+egg_night:"你发现了开关！以后随时点窗户就能切换白天和夜晚。",
+egg_lamp:"温馨灯光，已开启。",
+egg_views:"你已经逛遍房间的每个角落了，谢谢！",
+f_label:"教育背景",f_sub:"巴黎-萨克雷大学（QS 71，软科 12）· 2024 – 2027",
+li1:"财务会计与管理会计 · 管理控制",li2:"税务 · 民商法 · 经济学（微观与宏观）",
+hon1:"<strong>运营管理专业课全班第一</strong>",
+hon2:"数学与信息处理（Excel、Power Pivot、Power BI）<strong>双双满分 20/20</strong>",
+hon3:"数据分析与可视化 · SQL（课程进行中）",
+lang_label:"语言能力",lz:"中文",lzl:"母语",lf:"法语",lfl:"C1 — 高等教育语言准入证书",le:"英语",lel:"雅思 7.0 — 听力 8.0 · 阅读 8.0",lk:"韩语",lkl:"日常会话",
+s_label:"技能",sk_data:"数据与分析",sk_fin:"财务软件",sk_dev:"开发",sk_des:"设计与表达",sk_d1:"私募股权路演 PPT",sk_d2:"项目企划书",sk_d3:"海报设计与视频剪辑",
+cam_label:"校园经历",
+cam1:"<strong>校级学生组织 — 策划与组织（2025–2026，巴黎）</strong>：策划并销售校园纪念品，为系里盈利 <strong>2000 欧元以上</strong>；独立负责选品、定价与库存管理全流程。",
+cam2:"与法国公益组织 <strong>Emmaüs Défi</strong> 合作：统筹三场主题活动——场地、宣传与志愿者协调全流程落地。",
+fun_label:"数字之外",fun1:"📖 重度阅读爱好者——所以做了 Bookshelf 线上书库",fun2:"♻️ 可持续时尚与二手生活——所以做了 Eco-Mode",fun3:"🎨 为活动设计海报、剪辑视频——还画画",fun4:"🐕 狗派（房间里藏着一只狗……）",
+cv_btn:"下载我的简历 ↓",
+a_intro:"你好！我是<strong>商脩畅（Shang Xiuchang）</strong>。在巴黎-萨克雷大学读管理，在北京的投资基金实习。一次实习中，一张画得磕磕绊绊的基金设立流程图让我明白了一件事：组织里许多看似模糊的地方，其实只是一套还没被写下来的结构。我喜欢把这些结构写下来——用 Excel 模型、用流程、用网站。我的目标是成为产品经理：站在定义需求的人与动手构建的人之间，做那座桥。",
+exp_label:"工作经历",
+avail:"🎓 2027 年 6 月本科毕业 · <b>2027 年 3 月可到岗</b> · 可接受海外外派",
+i1t:"实习生 — 私募基金中后台",i2t:"实习生 — 职能总监助理：财务、税务与人事",i3t:"实习生 — 账户管理前台",
+co1:"和一资本 · 北京开拓和一私募基金管理 &nbsp;·&nbsp; 认缴规模 10 亿+，12 支基金",co2:"飞奔君 FBB &nbsp;·&nbsp; 优酷 · 阿里巴巴新媒体宣发代理",co3:"东方财富 &nbsp;·&nbsp; 北京营业部",
+loc1:"中国北京（远程）&nbsp;·&nbsp; 2026 年 6 月至今",loc2:"中国北京 &nbsp;·&nbsp; 2025 年 4 – 7 月",loc3:"中国北京 &nbsp;·&nbsp; 2026 年 4 – 5 月",badge:"实习",
+t1:"<strong>基金全生命周期</strong> — 参与从工商注册、银行专户开立到 AMBERS 系统备案的完整链条。",
+t2:"<strong>监管报告与税务</strong> — 负责 <strong>10 只基金</strong>及管理人的 AMAC 监管报告与税务申报；用用友软件处理日常账务。",
+t3:"<strong>独立承担法务工作</strong> — 从零设立员工持股平台（有限合伙企业），并负责股权转让的行政材料。",
+t3b:"<strong>流程与对外沟通</strong> — 与携程商旅技术团队合作重设计差旅报销审批流（<strong>时效缩短到一日以内</strong>）；对接投资人、政府部门、银行与地方税务局。",
+t7:"<strong>开户与账户变更</strong> — 二级市场行政流程，包括双录与反洗钱条例告知。",
+t8:"<strong>客户组织</strong> — 提前准备文件与预约安排：<strong>日均服务客户数翻倍</strong>，经手客户 20+，零投诉。",
+t9:"<strong>耐心与讲解</strong> — 面对急躁或不理解的客户，清楚讲解监管要求与业务流程。",
+t4:"<strong>财务分析</strong> — 用 Excel 处理<strong>近 700 条报销数据</strong>做税务自查；独立产出 <strong>3 份财务报告</strong>（营收、利润、支出）。",
+t6:"<strong>人事与招聘</strong> — 初筛 8 位财务主管候选并安排面试；全流程跟进剧宣方向营销岗位招聘，直至候选人签下正式合同。",
+t5:"<strong>市场情报</strong> — 基于实习期积累的行业认知，为中国社交平台生态（抖音、微博）与内容商业化提供信息支持。",
+sub1:"让东西流转，而不是多买",sub2:"做一个我缺少的工具",sub3:"一次逆主流的批判性分析",
+sum1:"在项目课上，我和同学一起打造了 Eco-Mode，一个关于可持续时尚的项目。衣物交换的点子是我提出的，活动海报也由我设计。最成功的是两场牛仔布改造工作坊：我们提前从 Emmaüs 收集旧牛仔裤，我负责现场教学并拍摄宣传视频，参与者一共做出 25 个牛仔布包。",
+sum2:"Bookshelf 是我给自己做的线上个人书库：我的阅读来源很杂（电子书、纸质书、借阅），却没有地方统一管理。可以搜索一本书，通过 Open Library API 自动获取封面，再放上虚拟书架，并借助本地存储在下次打开时保留。项目全程在 GitHub 上完成；我用 AI 理解逻辑，但代码是自己改的。现在我每天都在用，下一步想加书评功能。",
+sum3:"我和搭档在英语课上做了一场关于 AI 对就业影响的展示，观点与乐观主流相反：AI 可能加剧经济两极分化，让劳动者失去转行的出路。资料包括麦肯锡关于 AI 时代技能的报告，以及 Anthropic CEO 关于低薪“底层阶层”的警告。",
+hl1:"<strong>我的收获：</strong>比起让旧衣服获得第二次生命，更触动我的是看到每位参与者带着亲手做的包、满脸自豪地离开。",
+hl2:"<strong>我的收获：</strong>把 AI 当作起点、再亲手改代码，和直接复制粘贴答案完全是两回事。真正的学习发生在你理解自己改了什么、为什么改的时候。",
+hl3:"<strong>我的收获：</strong>我自己每天都用 AI。一边论证它的风险、一边用它学写代码并不矛盾，我认为这是面对这项技术最诚实的态度。",
+ia_h:"<strong>课堂之外……</strong>",
+ia_p1:"我和 AI 的缘分从高中生物课开始：思想由神经元的开关承载——那和 0 与 1 有什么区别？如果足够多的单元凑在一起就能构成心智，那么一个想法和一个语言模型的预测，边界究竟在哪里？我没有答案，也不认为有谁已经有定论。为了找到讨论它的词汇，我在网上修了哲学课：西方哲学史（中国人民大学）、康德哲学（华中科技大学）。",
+ia_p2:"一个更具体的问题一直在我心里：版权。中国法院已认定 AI 生成的图像可以受著作权保护。但我自己也画画，我认识的很多插画师看法不同：在他们眼里，AI 图像是由人类画师多年心血的“残片”缝合出来的——一张没有灵魂的图。技术圈主张数据的开放使用，艺术圈不接受这套逻辑。我不知道谁对，但我觉得需要受过训练的人，用严谨和体贴去作出判断。",
+ia_p3:"实习中我每天都在用 AI 提效。我的上级也想要一个 AI 助手，但担心把公司信息放进云端会暴露核心数据，而且一旦泄露找不到明确的责任人。这次谈话我一直记着：如果 AI 真要改变组织的工作方式、而不是躺在货架上吃灰，泄露、侵权与责任归属就必须被正面面对——而不是绕开。",
+hl4:"<strong>我想去的方向：</strong>把我带入这个领域的问题——机器能否成为一个人？——可以再等等。紧迫的问题是：谁来为 AI 的产出和它处理的数据负责？这也是我想走的方向。",
+st1:"人参加 — 参观 Emmaüs",st2:"人参加 — 衣物交换",st3:"人参加 — 改造工作坊",st4:"个牛仔布包"}};
+const FR_T={
+egg_cat:"Wouf ! Tu as trouvé le chien — le vrai patron de la pièce.",
+egg_night:"Interrupteur trouvé ! Clique sur la fenêtre quand tu veux pour basculer jour / nuit.",
+egg_lamp:"Éclairage cosy, activé.",
+egg_views:"Tu as exploré tous les recoins de la pièce. Merci !"};
+const $=s=>document.querySelector(s),$$=s=>[...document.querySelectorAll(s)];
+$$('[data-t]').forEach(e=>e.dataset.fr=e.innerHTML);
+const V={home:['home'],about:['about'],work:['work'],eco:['eco'],code:['code'],ia:['ia'],cv:['about','work']};
+function setLang(l){
+  document.documentElement.lang=l;
+  $$('[data-t]').forEach(e=>{const k=e.dataset.t;e.innerHTML=l=='fr'?e.dataset.fr:(T[l][k]??e.dataset.fr)});
+  $$('#langs .pill').forEach(b=>b.classList.toggle('on',b.dataset.l==l));
+  try{localStorage.setItem('lang',l)}catch(e){}
+}
+function toast(k){
+  const t=$('#toast'),l=document.documentElement.lang;
+  t.innerHTML=l=='fr'?(FR_T[k]||''):(T[l][k]||'');
+  t.classList.add('show');clearTimeout(t._h);t._h=setTimeout(()=>t.classList.remove('show'),2800);
+}
+/* --- secrets & progression --- */
+const PAGES=['code','eco','work','about','ia'];
+const EGGS=['cat','night','lamp'];
+const seen=new Set(),got=new Set();
+try{JSON.parse(localStorage.getItem('xs_seen')||'[]').forEach(v=>seen.add(v));}catch(e){}
+function buildDots(){
+  const d=$('#dots');if(!d||d.childElementCount)return;
+  PAGES.forEach(p=>{const i=document.createElement('i');i.dataset.k=p;d.appendChild(i)});
+  EGGS.forEach(p=>{const i=document.createElement('i');i.className='egg';i.dataset.k=p;d.appendChild(i)});
+}
+function saveSeen(){try{localStorage.setItem('xs_seen',JSON.stringify([...seen]));localStorage.setItem('xs_eggs',JSON.stringify([...got]))}catch(e){}}
+function updateDots(){
+  buildDots();
+  $$('#dots i').forEach(i=>{i.classList.toggle('on',seen.has(i.dataset.k)||got.has(i.dataset.k))});
+}
+function checkAll(){
+  if(PAGES.every(p=>seen.has(p))&&!got.has('views')){got.add('views');saveSeen();toast('egg_views')}
+}
+let catN=0;
+function catClick(el){
+  el.classList.remove('catjump');void el.offsetWidth;el.classList.add('catjump');
+  catN++;if(catN>=3&&!got.has('cat')){got.add('cat');saveSeen();updateDots();toast('egg_cat');checkAll()}
+}
+function toggleNight(){
+  document.body.classList.toggle('night');
+  if(!got.has('night')){got.add('night');saveSeen();updateDots();toast('egg_night');checkAll()}
+}
+function toggleLamp(el){
+  el.querySelector('.glow').classList.remove('flicker');void el.offsetWidth;el.querySelector('.glow').classList.add('flicker');
+  document.body.classList.toggle('lampoff');
+  if(!got.has('lamp')){got.add('lamp');saveSeen();updateDots();toast('egg_lamp');checkAll()}
+}
+/* --- zoom transition --- */
+function zoomTo(el,v){
+  const svg=$('.room');
+  try{
+    const b=el.getBBox(),r=svg.getBoundingClientRect(),k=r.width/800,s=1.9;
+    svg.style.transform=`translate(${(400-(b.x+b.width/2)*s)*k}px,${(230-(b.y+b.height/2)*s)*k}px) scale(${s})`;
+  }catch(e){}
+  setTimeout(()=>go(v),380);
+}
+/* --- routing --- */
+function go(v){location.hash='#/'+v}
+function route(){
+  const v=(location.hash.replace('#/','')||'home');const show=V[v]||V.home;
+  $$('.view').forEach(e=>e.classList.toggle('on',show.includes(e.dataset.v)));
+  document.body.classList.toggle('sub',v!='home');
+  const svg=$('.room');if(svg&&v=='home')svg.style.transform='';
+  if(PAGES.includes(v)&&!seen.has(v)){seen.add(v);saveSeen();checkAll()}
+  updateDots();scrollTo(0,0);
+}
+/* --- parallax (cheap, rAF-throttled, desktop only) --- */
+(function(){
+  if(matchMedia('(prefers-reduced-motion: reduce)').matches||matchMedia('(hover:none)').matches)return;
+  const room=$('.room');let rq=0;
+  addEventListener('mousemove',e=>{
+    if(rq||document.body.classList.contains('sub'))return;
+    rq=requestAnimationFrame(()=>{rq=0;
+      const r=room.getBoundingClientRect();
+      room.style.setProperty('--px',((e.clientX-r.left)/r.width-.5).toFixed(3));
+      room.style.setProperty('--py',((e.clientY-r.top)/r.height-.5).toFixed(3));
     });
-    el.addEventListener('mouseleave', () => {
-      cursor.style.width = '12px';
-      cursor.style.height = '12px';
-      cursor.style.background = '#ff4d1c';
-    });
-  });
-
-  // Scroll reveal
-  const observer = new IntersectionObserver(entries => {
-    entries.forEach(entry => {
-      if (entry.isIntersecting) {
-        entry.target.classList.add('visible');
-      }
-    });
-  }, { threshold: 0.1 });
-
-  document.querySelectorAll('.activity').forEach(el => observer.observe(el));
+  },{passive:true});
+})();
+$$('[data-l]').forEach(b=>b.onclick=()=>{setLang(b.dataset.l);$('#gate').classList.add('off')});
+addEventListener('hashchange',route);
+let l=new URLSearchParams(location.search).get('lang'),saved=null;
+try{saved=localStorage.getItem('lang')}catch(e){}
+if(!T[l]&&l!='fr')l=saved;
+if(l=='fr'||T[l]){setLang(l);$('#gate').classList.add('off')}
+route();
 </script>
 </body>
 </html>
